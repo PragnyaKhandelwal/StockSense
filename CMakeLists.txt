@@ -1,0 +1,81 @@
+cmake_minimum_required(VERSION 3.16)
+project(QtApp VERSION 1.0.0 LANGUAGES CXX)
+
+# Generate compile_commands.json for better IDE support
+set(CMAKE_EXPORT_COMPILE_COMMANDS ON)
+
+# Set C++ standard
+set(CMAKE_CXX_STANDARD 17)
+set(CMAKE_CXX_STANDARD_REQUIRED ON)
+
+# Qt settings
+set(CMAKE_AUTOMOC ON)
+set(CMAKE_AUTOUIC ON)
+set(CMAKE_AUTORCC OFF)
+
+# Set Qt path - modify this if your Qt installation is different
+if(NOT DEFINED CMAKE_PREFIX_PATH)
+    set(CMAKE_PREFIX_PATH "C:/Qt/6.5.10/mingw_64")
+endif()
+
+# Set compiler paths for consistency
+if(NOT CMAKE_CXX_COMPILER)
+    set(CMAKE_CXX_COMPILER "C:/Qt/Tools/mingw1120_64/bin/g++.exe")
+endif()
+if(NOT CMAKE_C_COMPILER)
+    set(CMAKE_C_COMPILER "C:/Qt/Tools/mingw1120_64/bin/gcc.exe")
+endif()
+
+# Add include directories
+include_directories(${CMAKE_CURRENT_SOURCE_DIR}/include)
+
+# Set UI files directory for AUTOUIC
+set(CMAKE_AUTOUIC_SEARCH_PATHS ${CMAKE_CURRENT_SOURCE_DIR}/ui)
+
+# Find Qt6 components
+find_package(Qt6 REQUIRED COMPONENTS 
+    Core 
+    Widgets 
+    Gui
+)
+
+# Collect source files
+file(GLOB_RECURSE SOURCES "src/*.cpp")
+file(GLOB_RECURSE HEADERS "include/*.h")
+file(GLOB_RECURSE UI_FILES "ui/*.ui")
+
+# Create executable
+add_executable(QtApp
+    ${SOURCES}
+    ${HEADERS}
+    ${UI_FILES}
+)
+
+# Link Qt libraries
+target_link_libraries(QtApp PRIVATE 
+    Qt6::Core
+    Qt6::Widgets 
+    Qt6::Gui
+)
+
+# Set target properties
+set_target_properties(QtApp PROPERTIES
+    WIN32_EXECUTABLE TRUE
+    MACOSX_BUNDLE TRUE
+    VERSION ${PROJECT_VERSION}
+)
+
+# Include directories
+target_include_directories(QtApp PRIVATE
+    ${CMAKE_CURRENT_SOURCE_DIR}/include
+    ${CMAKE_CURRENT_BINARY_DIR}
+)
+
+# Copy Qt DLLs to output directory on Windows
+if(WIN32)
+    add_custom_command(TARGET QtApp POST_BUILD
+        COMMAND ${CMAKE_COMMAND} -E env PATH="${CMAKE_PREFIX_PATH}/bin" 
+        ${CMAKE_PREFIX_PATH}/bin/windeployqt.exe 
+        "$<TARGET_FILE:QtApp>"
+        COMMENT "Copying Qt libraries")
+endif()

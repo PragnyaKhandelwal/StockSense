@@ -1,0 +1,138 @@
+{
+	"version": "2.0.0",
+	"tasks": [
+		{
+			"label": "Configure CMake",
+			"type": "shell",
+			"command": "C:/Qt/Tools/CMake_64/bin/cmake.exe",
+			"args": [
+				"-B",
+				"build",
+				"-G",
+				"Ninja",
+				"-DCMAKE_BUILD_TYPE=Debug",
+				"-DCMAKE_CXX_COMPILER=C:/Qt/Tools/mingw1120_64/bin/g++.exe"
+			],
+			"options": {
+				"env": {
+					"PATH": "C:/Qt/Tools/Ninja;C:/Qt/Tools/CMake_64/bin;C:/Qt/Tools/mingw1120_64/bin;${env:PATH}"
+				}
+			},
+			"problemMatcher": [
+				"$gcc"
+			],
+			"group": "build",
+			"detail": "Configure the project with CMake using Ninja generator"
+		},
+		{
+			"label": "Configure CMake (Release)",
+			"type": "shell",
+			"command": "C:/Qt/Tools/CMake_64/bin/cmake.exe",
+			"args": [
+				"-B",
+				"build-release",
+				"-G",
+				"Ninja",
+				"-DCMAKE_BUILD_TYPE=Release",
+				"-DCMAKE_CXX_COMPILER=C:/Qt/Tools/mingw1120_64/bin/g++.exe"
+			],
+			"options": {
+				"env": {
+					"PATH": "C:/Qt/Tools/Ninja;C:/Qt/Tools/CMake_64/bin;C:/Qt/Tools/mingw1120_64/bin;${env:PATH}"
+				}
+			},
+			"problemMatcher": [
+				"$gcc"
+			],
+			"group": "build",
+			"detail": "Configure the project for release build"
+		},
+		{
+			"label": "Build Application",
+			"type": "shell",
+			"command": "C:/Qt/Tools/CMake_64/bin/cmake.exe",
+			"args": [
+				"--build",
+				"build"
+			],
+			"options": {
+				"env": {
+					"PATH": "C:/Qt/Tools/Ninja;C:/Qt/Tools/CMake_64/bin;C:/Qt/Tools/mingw1120_64/bin;${env:PATH}"
+				}
+			},
+			"problemMatcher": [
+				"$gcc"
+			],
+			"group": {
+				"kind": "build",
+				"isDefault": true
+			},
+			"dependsOn": "Configure CMake",
+			"detail": "Build the application using CMake"
+		},
+		{
+			"label": "Build Application (Release)",
+			"type": "shell",
+			"command": "C:/Qt/Tools/CMake_64/bin/cmake.exe",
+			"args": [
+				"--build",
+				"build-release"
+			],
+			"options": {
+				"env": {
+					"PATH": "C:/Qt/Tools/Ninja;C:/Qt/Tools/CMake_64/bin;C:/Qt/Tools/mingw1120_64/bin;${env:PATH}"
+				}
+			},
+			"problemMatcher": [
+				"$gcc"
+			],
+			"group": "build",
+			"dependsOn": "Configure CMake (Release)",
+			"detail": "Build the application in release mode"
+		},
+		{
+			"label": "Clean Build",
+			"type": "shell",
+			"command": "C:/Qt/Tools/CMake_64/bin/cmake.exe",
+			"args": [
+				"--build",
+				"build",
+				"--target",
+				"clean"
+			],
+			"options": {
+				"env": {
+					"PATH": "C:/Qt/Tools/Ninja;C:/Qt/Tools/CMake_64/bin;C:/Qt/Tools/mingw1120_64/bin;${env:PATH}"
+				}
+			},
+			"problemMatcher": [],
+			"group": "build",
+			"detail": "Clean build artifacts"
+		},
+		{
+			"label": "Run Application",
+			"type": "shell",
+			"command": "${workspaceFolder}/build/QtApp.exe",
+			"args": [],
+			"group": "test",
+			"dependsOn": "Build Application",
+			"detail": "Run the compiled application",
+			"presentation": {
+				"echo": true,
+				"reveal": "always",
+				"focus": false,
+				"panel": "new"
+			}
+		},
+		{
+			"label": "Rebuild All",
+			"dependsOrder": "sequence",
+			"dependsOn": [
+				"Clean Build",
+				"Build Application"
+			],
+			"group": "build",
+			"detail": "Clean and rebuild the entire project"
+		}
+	]
+}
