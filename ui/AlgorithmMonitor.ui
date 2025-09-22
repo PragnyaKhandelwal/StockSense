@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ui version="4.0">
+ <class>AlgorithmMonitor</class>
+ <widget class="QWidget" name="AlgorithmMonitor">
+  <property name="windowTitle">
+   <string>Algorithm Monitor</string>
+  </property>
+  <layout class="QVBoxLayout" name="verticalLayout">
+   <item>
+    <widget class="QTableWidget" name="tableAlgorithms"/>
+   </item>
+   <item>
+    <widget class="QProgressBar" name="progressOverall">
+     <property name="value">
+      <number>0</number>
+     </property>
+    </widget>
+   </item>
+  </layout>
+ </widget>
+ <resources/>
+ <connections/>
+ </ui>
