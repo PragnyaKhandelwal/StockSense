@@ -6,11 +6,111 @@
    <string>Watchlist</string>
   </property>
   <layout class="QVBoxLayout" name="verticalLayout">
+   <property name="spacing">
+    <number>16</number>
+   </property>
+   <property name="leftMargin">
+    <number>24</number>
+   </property>
+   <property name="topMargin">
+    <number>24</number>
+   </property>
+   <property name="rightMargin">
+    <number>24</number>
+   </property>
+   <property name="bottomMargin">
+    <number>24</number>
+   </property>
    <item>
-    <widget class="QTableWidget" name="tableWidget">
+    <widget class="QWidget" name="headerWidget">
+     <layout class="QHBoxLayout" name="headerLayout">
+      <property name="leftMargin">
+       <number>0</number>
+      </property>
+      <property name="topMargin">
+       <number>0</number>
+      </property>
+      <property name="rightMargin">
+       <number>0</number>
+      </property>
+      <property name="bottomMargin">
+       <number>0</number>
+      </property>
+      <item>
+       <widget class="QLabel" name="titleLabel">
+        <property name="text">
+         <string>My Watchlist</string>
+        </property>
+        <property name="font">
+         <font>
+          <pointsize>18</pointsize>
+          <weight>75</weight>
+          <bold>true</bold>
+         </font>
+        </property>
+       </widget>
+      </item>
+      <item>
+       <spacer name="horizontalSpacer">
+        <property name="orientation">
+         <enum>Qt::Horizontal</enum>
+        </property>
+        <property name="sizeHint" stdset="0">
+         <size>
+          <width>40</width>
+          <height>20</height>
+         </size>
+        </property>
+       </spacer>
+      </item>
+      <item>
+       <widget class="QLineEdit" name="searchEdit">
+        <property name="placeholderText">
+         <string>Search symbols...</string>
+        </property>
+        <property name="minimumSize">
+         <size>
+          <width>200</width>
+          <height>0</height>
+         </size>
+        </property>
+       </widget>
+      </item>
+      <item>
+       <widget class="QPushButton" name="addButton">
+        <property name="text">
+         <string>Add Stock</string>
+        </property>
+        <property name="minimumSize">
+         <size>
+          <width>100</width>
+          <height>0</height>
+         </size>
+        </property>
+       </widget>
+      </item>
+     </layout>
+    </widget>
+   </item>
+   <item>
+    <widget class="QTableWidget" name="stockTable">
+     <property name="alternatingRowColors">
+      <bool>true</bool>
+     </property>
+     <property name="selectionBehavior">
+      <enum>QAbstractItemView::SelectRows</enum>
+     </property>
+     <property name="sortingEnabled">
+      <bool>true</bool>
+     </property>
      <column>
       <property name="text">
        <string>Symbol</string>
+      </property>
+     </column>
+     <column>
+      <property name="text">
+       <string>Company</string>
       </property>
      </column>
      <column>
@@ -23,10 +123,30 @@
        <string>Change</string>
       </property>
      </column>
+     <column>
+      <property name="text">
+       <string>% Change</string>
+      </property>
+     </column>
+     <column>
+      <property name="text">
+       <string>Volume</string>
+      </property>
+     </column>
+     <column>
+      <property name="text">
+       <string>Market Cap</string>
+      </property>
+     </column>
+     <column>
+      <property name="text">
+       <string>Actions</string>
+      </property>
+     </column>
     </widget>
    </item>
   </layout>
  </widget>
  <resources/>
  <connections/>
- </ui>
+</ui>

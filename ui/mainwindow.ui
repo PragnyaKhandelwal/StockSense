@@ -6,59 +6,87 @@
    <rect>
     <x>0</x>
     <y>0</y>
-    <width>400</width>
-    <height>300</height>
+    <width>1400</width>
+    <height>900</height>
    </rect>
   </property>
   <property name="windowTitle">
-   <string>QtApp</string>
+   <string>StockSense - Professional Stock Analysis</string>
   </property>
   <widget class="QWidget" name="centralwidget">
-   <widget class="QPushButton" name="pushButton">
-    <property name="geometry">
-     <rect>
-      <x>160</x>
-      <y>120</y>
-      <width>75</width>
-      <height>24</height>
-     </rect>
+   <layout class="QVBoxLayout" name="mainVerticalLayout">
+    <property name="spacing">
+     <number>0</number>
     </property>
-    <property name="text">
-     <string>PushButton</string>
+    <property name="leftMargin">
+     <number>0</number>
     </property>
-   </widget>
-   <widget class="QLabel" name="label">
-    <property name="geometry">
-     <rect>
-      <x>160</x>
-      <y>170</y>
-      <width>81</width>
-      <height>20</height>
-     </rect>
+    <property name="topMargin">
+     <number>0</number>
     </property>
-    <property name="text">
-     <string>Hello World</string>
+    <property name="rightMargin">
+     <number>0</number>
     </property>
-    <property name="scaledContents">
-     <bool>true</bool>
+    <property name="bottomMargin">
+     <number>0</number>
     </property>
-    <property name="alignment">
-     <set>Qt::AlignCenter</set>
-    </property>
-   </widget>
-   <widget class="QPushButton" name="pushButton_2">
-    <property name="geometry">
-     <rect>
-      <x>70</x>
-      <y>170</y>
-      <width>75</width>
-      <height>24</height>
-     </rect>
-    </property>
-    <property name="text">
-     <string>PushButton</string>
-    </property>
-   </widget>
+    <item>
+     <widget class="QWidget" name="headerContainer">
+      <property name="minimumSize">
+       <size>
+        <width>0</width>
+        <height>60</height>
+       </size>
+      </property>
+      <property name="maximumSize">
+       <size>
+        <width>16777215</width>
+        <height>60</height>
+       </size>
+      </property>
+     </widget>
+    </item>
+    <item>
+     <widget class="QWidget" name="contentContainer">
+      <layout class="QHBoxLayout" name="contentLayout">
+       <property name="spacing">
+        <number>0</number>
+       </property>
+       <property name="leftMargin">
+        <number>0</number>
+       </property>
+       <property name="topMargin">
+        <number>0</number>
+       </property>
+       <property name="rightMargin">
+        <number>0</number>
+       </property>
+       <property name="bottomMargin">
+        <number>0</number>
+       </property>
+       <item>
+        <widget class="QWidget" name="sidebarContainer">
+         <property name="minimumSize">
+          <size>
+           <width>250</width>
+           <height>0</height>
+          </size>
+         </property>
+         <property name="maximumSize">
+          <size>
+           <width>250</width>
+           <height>16777215</height>
+          </size>
+         </property>
+        </widget>
+       </item>
+       <item>
+        <widget class="QStackedWidget" name="stackedWidget"/>
+       </item>
+      </layout>
+     </widget>
+    </item>
+   </layout>
   </widget>
     <widget class="QMenuBar" name="menubar">
      <property name="geometry">
