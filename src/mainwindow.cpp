@@ -46,7 +46,7 @@
 #include <QApplication>
 #include <QScreen>
 
-QT_CHARTS_BEGIN_NAMESPACE
+
 class QChart;
 class QChartView;
 class QLineSeries;
@@ -58,9 +58,7 @@ class QValueAxis;
 class QCandlestickSeries;
 class QCandlestickSet;
 class QScatterSeries;
-QT_CHARTS_END_NAMESPACE
 
-QT_CHARTS_USE_NAMESPACE
 
 MainWindow::MainWindow(QWidget *parent)
     : QMainWindow(parent)
@@ -1686,4 +1684,9 @@ void MainWindow::applyTheme()
         "  color: %3; "
         "}"
     ).arg(backgroundColor, cardBackground, textColor, borderColor));
+}
+void MainWindow::on_actionAbout_triggered()
+{
+    AboutDialog dialog(this);
+    dialog.exec();
 }
