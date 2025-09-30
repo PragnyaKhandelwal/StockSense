@@ -13,9 +13,9 @@ set(CMAKE_AUTOMOC ON)
 set(CMAKE_AUTOUIC ON)
 set(CMAKE_AUTORCC OFF)
 
-# Set Qt path - modify this if your Qt installation is different
+# Set Qt path - FIXED: Changed from 6.5.10 to 6.5.3
 if(NOT DEFINED CMAKE_PREFIX_PATH)
-    set(CMAKE_PREFIX_PATH "C:/Qt/6.5.10/mingw_64")
+    set(CMAKE_PREFIX_PATH "C:/Qt/6.5.3/mingw_64")
 endif()
 
 # Set compiler paths for consistency
