@@ -1,0 +1,783 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ui version="4.0">
+ <class>AlgorithmMonitor</class>
+ <widget class="QWidget" name="AlgorithmMonitor">
+  <property name="geometry">
+   <rect>
+    <x>0</x>
+    <y>0</y>
+    <width>1000</width>
+    <height>900</height>
+   </rect>
+  </property>
+  <property name="windowTitle">
+   <string>Algorithm Monitor</string>
+  </property>
+  
+  <layout class="QVBoxLayout" name="mainLayout">
+   <property name="spacing">
+    <number>24</number>
+   </property>
+   <property name="leftMargin">
+    <number>24</number>
+   </property>
+   <property name="topMargin">
+    <number>24</number>
+   </property>
+   <property name="rightMargin">
+    <number>24</number>
+   </property>
+   <property name="bottomMargin">
+    <number>24</number>
+   </property>
+   
+   <item>
+    <widget class="QFrame" name="monitorCard">
+     <property name="frameShape">
+      <enum>QFrame::Box</enum>
+     </property>
+     <layout class="QVBoxLayout" name="cardLayout">
+      <property name="spacing">
+       <number>24</number>
+      </property>
+      <property name="leftMargin">
+       <number>24</number>
+      </property>
+      <property name="topMargin">
+       <number>24</number>
+      </property>
+      <property name="rightMargin">
+       <number>24</number>
+      </property>
+      <property name="bottomMargin">
+       <number>24</number>
+      </property>
+      
+      <!-- Header with System Badges -->
+      <item>
+       <widget class="QWidget" name="headerWidget">
+        <layout class="QHBoxLayout" name="headerLayout">
+         <item>
+          <widget class="QLabel" name="monitorTitle">
+           <property name="text">
+            <string>📊 Algorithm Performance Monitor</string>
+           </property>
+          </widget>
+         </item>
+         <item>
+          <spacer name="headerSpacer">
+           <property name="orientation">
+            <enum>Qt::Horizontal</enum>
+           </property>
+          </spacer>
+         </item>
+         <item>
+          <widget class="QLabel" name="cpuBadge">
+           <property name="text">
+            <string>💻 CPU: 43.2%</string>
+           </property>
+          </widget>
+         </item>
+         <item>
+          <widget class="QLabel" name="ramBadge">
+           <property name="text">
+            <string>💾 RAM: 67.8%</string>
+           </property>
+          </widget>
+         </item>
+        </layout>
+       </widget>
+      </item>
+      
+      <!-- System Overview Grid -->
+      <item>
+       <widget class="QWidget" name="overviewWidget">
+        <layout class="QGridLayout" name="overviewLayout">
+         <property name="spacing">
+          <number>24</number>
+         </property>
+         
+         <!-- Active Algorithms -->
+         <item row="0" column="0">
+          <widget class="QWidget" name="activeCard">
+           <layout class="QVBoxLayout" name="activeLayout">
+            <property name="spacing">
+             <number>8</number>
+            </property>
+            <item>
+             <widget class="QLabel" name="activeCount">
+              <property name="text">
+               <string>3</string>
+              </property>
+              <property name="alignment">
+               <set>Qt::AlignCenter</set>
+              </property>
+             </widget>
+            </item>
+            <item>
+             <widget class="QLabel" name="activeLabel">
+              <property name="text">
+               <string>Active</string>
+              </property>
+              <property name="alignment">
+               <set>Qt::AlignCenter</set>
+              </property>
+             </widget>
+            </item>
+           </layout>
+          </widget>
+         </item>
+         
+         <!-- Optimizing Algorithms -->
+         <item row="0" column="1">
+          <widget class="QWidget" name="optimizingCard">
+           <layout class="QVBoxLayout" name="optimizingLayout">
+            <property name="spacing">
+             <number>8</number>
+            </property>
+            <item>
+             <widget class="QLabel" name="optimizingCount">
+              <property name="text">
+               <string>1</string>
+              </property>
+              <property name="alignment">
+               <set>Qt::AlignCenter</set>
+              </property>
+             </widget>
+            </item>
+            <item>
+             <widget class="QLabel" name="optimizingLabel">
+              <property name="text">
+               <string>Optimizing</string>
+              </property>
+              <property name="alignment">
+               <set>Qt::AlignCenter</set>
+              </property>
+             </widget>
+            </item>
+           </layout>
+          </widget>
+         </item>
+         
+         <!-- Total Operations -->
+         <item row="0" column="2">
+          <widget class="QWidget" name="opsCard">
+           <layout class="QVBoxLayout" name="opsLayout">
+            <property name="spacing">
+             <number>8</number>
+            </property>
+            <item>
+             <widget class="QLabel" name="opsCount">
+              <property name="text">
+               <string>1,915</string>
+              </property>
+              <property name="alignment">
+               <set>Qt::AlignCenter</set>
+              </property>
+             </widget>
+            </item>
+            <item>
+             <widget class="QLabel" name="opsLabel">
+              <property name="text">
+               <string>Ops/sec</string>
+              </property>
+              <property name="alignment">
+               <set>Qt::AlignCenter</set>
+              </property>
+             </widget>
+            </item>
+           </layout>
+          </widget>
+         </item>
+         
+         <!-- Cache Hit Rate -->
+         <item row="0" column="3">
+          <widget class="QWidget" name="cacheCard">
+           <layout class="QVBoxLayout" name="cacheLayout">
+            <property name="spacing">
+             <number>8</number>
+            </property>
+            <item>
+             <widget class="QLabel" name="cacheHitRate">
+              <property name="text">
+               <string>92.5%</string>
+              </property>
+              <property name="alignment">
+               <set>Qt::AlignCenter</set>
+              </property>
+             </widget>
+            </item>
+            <item>
+             <widget class="QLabel" name="cacheLabel">
+              <property name="text">
+               <string>Cache Hit</string>
+              </property>
+              <property name="alignment">
+               <set>Qt::AlignCenter</set>
+              </property>
+             </widget>
+            </item>
+           </layout>
+          </widget>
+         </item>
+        </layout>
+       </widget>
+      </item>
+      
+      <!-- Algorithm Details Section -->
+      <item>
+       <widget class="QScrollArea" name="algorithmsScrollArea">
+        <property name="frameShape">
+         <enum>QFrame::NoFrame</enum>
+        </property>
+        <property name="widgetResizable">
+         <bool>true</bool>
+        </property>
+        <widget class="QWidget" name="scrollAreaWidget">
+         <property name="geometry">
+          <rect>
+           <x>0</x>
+           <y>0</y>
+           <width>69</width>
+           <height>69</height>
+          </rect>
+         </property>
+         <layout class="QVBoxLayout" name="algorithmsLayout">
+          <property name="spacing">
+           <number>12</number>
+          </property>
+          
+          <!-- Binary Search Tree Algorithm -->
+          <item>
+           <widget class="QFrame" name="bstAlgorithmCard">
+            <property name="frameShape">
+             <enum>QFrame::Box</enum>
+            </property>
+            <layout class="QVBoxLayout" name="bstAlgorithmLayout">
+             <property name="spacing">
+              <number>12</number>
+             </property>
+             <property name="leftMargin">
+              <number>16</number>
+             </property>
+             <property name="topMargin">
+              <number>16</number>
+             </property>
+             <property name="rightMargin">
+              <number>16</number>
+             </property>
+             <property name="bottomMargin">
+              <number>16</number>
+             </property>
+             
+             <!-- Algorithm Header -->
+             <item>
+              <widget class="QWidget" name="bstAlgorithmHeader">
+               <layout class="QHBoxLayout" name="bstAlgorithmHeaderLayout">
+                <item>
+                 <widget class="QLabel" name="bstIcon">
+                  <property name="text">
+                   <string>🌳</string>
+                  </property>
+                 </widget>
+                </item>
+                <item>
+                 <widget class="QLabel" name="bstName">
+                  <property name="text">
+                   <string>Binary Search Tree</string>
+                  </property>
+                 </widget>
+                </item>
+                <item>
+                 <widget class="QLabel" name="bstStatus">
+                  <property name="text">
+                   <string>running</string>
+                  </property>
+                 </widget>
+                </item>
+                <item>
+                 <spacer name="bstHeaderSpacer">
+                  <property name="orientation">
+                   <enum>Qt::Horizontal</enum>
+                  </property>
+                 </spacer>
+                </item>
+                <item>
+                 <widget class="QLabel" name="bstComplexity">
+                  <property name="text">
+                   <string>O(log n)</string>
+                  </property>
+                 </widget>
+                </item>
+                <item>
+                 <widget class="QLabel" name="bstExecutionTime">
+                  <property name="text">
+                   <string>2.3ms</string>
+                  </property>
+                 </widget>
+                </item>
+               </layout>
+              </widget>
+             </item>
+             
+             <!-- Progress Metrics Grid -->
+             <item>
+              <widget class="QWidget" name="bstProgressGrid">
+               <layout class="QGridLayout" name="bstProgressGridLayout">
+                <property name="spacing">
+                 <number>16</number>
+                </property>
+                
+                <!-- CPU Progress -->
+                <item row="0" column="0">
+                 <widget class="QWidget" name="bstCpuProgress">
+                  <layout class="QVBoxLayout" name="bstCpuProgressLayout">
+                   <property name="spacing">
+                    <number>4</number>
+                   </property>
+                   <item>
+                    <widget class="QWidget" name="bstCpuHeader">
+                     <layout class="QHBoxLayout" name="bstCpuHeaderLayout">
+                      <item>
+                       <widget class="QLabel" name="bstCpuLabel">
+                        <property name="text">
+                         <string>CPU</string>
+                        </property>
+                       </widget>
+                      </item>
+                      <item>
+                       <spacer name="bstCpuSpacer">
+                        <property name="orientation">
+                         <enum>Qt::Horizontal</enum>
+                        </property>
+                       </spacer>
+                      </item>
+                      <item>
+                       <widget class="QLabel" name="bstCpuValue">
+                        <property name="text">
+                         <string>8.2%</string>
+                        </property>
+                       </widget>
+                      </item>
+                     </layout>
+                    </widget>
+                   </item>
+                   <item>
+                    <widget class="QProgressBar" name="bstCpuProgressBar">
+                     <property name="value">
+                      <number>8</number>
+                     </property>
+                     <property name="textVisible">
+                      <bool>false</bool>
+                     </property>
+                    </widget>
+                   </item>
+                  </layout>
+                 </widget>
+                </item>
+                
+                <!-- Memory Progress -->
+                <item row="0" column="1">
+                 <widget class="QWidget" name="bstMemoryProgress">
+                  <layout class="QVBoxLayout" name="bstMemoryProgressLayout">
+                   <property name="spacing">
+                    <number>4</number>
+                   </property>
+                   <item>
+                    <widget class="QWidget" name="bstMemoryHeader">
+                     <layout class="QHBoxLayout" name="bstMemoryHeaderLayout">
+                      <item>
+                       <widget class="QLabel" name="bstMemoryLabel">
+                        <property name="text">
+                         <string>Memory</string>
+                        </property>
+                       </widget>
+                      </item>
+                      <item>
+                       <spacer name="bstMemorySpacer">
+                        <property name="orientation">
+                         <enum>Qt::Horizontal</enum>
+                        </property>
+                       </spacer>
+                      </item>
+                      <item>
+                       <widget class="QLabel" name="bstMemoryValue">
+                        <property name="text">
+                         <string>15.4%</string>
+                        </property>
+                       </widget>
+                      </item>
+                     </layout>
+                    </widget>
+                   </item>
+                   <item>
+                    <widget class="QProgressBar" name="bstMemoryProgressBar">
+                     <property name="value">
+                      <number>15</number>
+                     </property>
+                     <property name="textVisible">
+                      <bool>false</bool>
+                     </property>
+                    </widget>
+                   </item>
+                  </layout>
+                 </widget>
+                </item>
+                
+                <!-- Throughput Progress -->
+                <item row="0" column="2">
+                 <widget class="QWidget" name="bstThroughputProgress">
+                  <layout class="QVBoxLayout" name="bstThroughputProgressLayout">
+                   <property name="spacing">
+                    <number>4</number>
+                   </property>
+                   <item>
+                    <widget class="QWidget" name="bstThroughputHeader">
+                     <layout class="QHBoxLayout" name="bstThroughputHeaderLayout">
+                      <item>
+                       <widget class="QLabel" name="bstThroughputLabel">
+                        <property name="text">
+                         <string>Throughput</string>
+                        </property>
+                       </widget>
+                      </item>
+                      <item>
+                       <spacer name="bstThroughputSpacer">
+                        <property name="orientation">
+                         <enum>Qt::Horizontal</enum>
+                        </property>
+                       </spacer>
+                      </item>
+                      <item>
+                       <widget class="QLabel" name="bstThroughputValue">
+                        <property name="text">
+                         <string>450 ops/s</string>
+                        </property>
+                       </widget>
+                      </item>
+                     </layout>
+                    </widget>
+                   </item>
+                   <item>
+                    <widget class="QProgressBar" name="bstThroughputProgressBar">
+                     <property name="value">
+                      <number>38</number>
+                     </property>
+                     <property name="textVisible">
+                      <bool>false</bool>
+                     </property>
+                    </widget>
+                   </item>
+                  </layout>
+                 </widget>
+                </item>
+                
+                <!-- Cache Hit Progress -->
+                <item row="0" column="3">
+                 <widget class="QWidget" name="bstCacheProgress">
+                  <layout class="QVBoxLayout" name="bstCacheProgressLayout">
+                   <property name="spacing">
+                    <number>4</number>
+                   </property>
+                   <item>
+                    <widget class="QWidget" name="bstCacheHeader">
+                     <layout class="QHBoxLayout" name="bstCacheHeaderLayout">
+                      <item>
+                       <widget class="QLabel" name="bstCacheLabel">
+                        <property name="text">
+                         <string>Cache Hit</string>
+                        </property>
+                       </widget>
+                      </item>
+                      <item>
+                       <spacer name="bstCacheSpacer">
+                        <property name="orientation">
+                         <enum>Qt::Horizontal</enum>
+                        </property>
+                       </spacer>
+                      </item>
+                      <item>
+                       <widget class="QLabel" name="bstCacheValue">
+                        <property name="text">
+                         <string>94%</string>
+                        </property>
+                       </widget>
+                      </item>
+                     </layout>
+                    </widget>
+                   </item>
+                   <item>
+                    <widget class="QProgressBar" name="bstCacheProgressBar">
+                     <property name="value">
+                      <number>94</number>
+                     </property>
+                     <property name="textVisible">
+                      <bool>false</bool>
+                     </property>
+                    </widget>
+                   </item>
+                  </layout>
+                 </widget>
+                </item>
+               </layout>
+              </widget>
+             </item>
+            </layout>
+           </widget>
+          </item>
+          
+          <!-- Hash Table Algorithm (Simplified) -->
+          <item>
+           <widget class="QFrame" name="hashAlgorithmCard">
+            <property name="frameShape">
+             <enum>QFrame::Box</enum>
+            </property>
+            <layout class="QHBoxLayout" name="hashAlgorithmLayout">
+             <property name="leftMargin">
+              <number>16</number>
+             </property>
+             <property name="topMargin">
+              <number>16</number>
+             </property>
+             <property name="rightMargin">
+              <number>16</number>
+             </property>
+             <property name="bottomMargin">
+              <number>16</number>
+             </property>
+             <item>
+              <widget class="QLabel" name="hashAlgorithmSummary">
+               <property name="text">
+                <string>🗃️ Hash Table Lookup - O(1) - running - 1200 ops/s - 98% cache hit</string>
+               </property>
+              </widget>
+             </item>
+            </layout>
+           </widget>
+          </item>
+          
+          <!-- Graph Traversal Algorithm (Simplified) -->
+          <item>
+           <widget class="QFrame" name="graphAlgorithmCard">
+            <property name="frameShape">
+             <enum>QFrame::Box</enum>
+            </property>
+            <layout class="QHBoxLayout" name="graphAlgorithmLayout">
+             <property name="leftMargin">
+              <number>16</number>
+             </property>
+             <property name="topMargin">
+              <number>16</number>
+             </property>
+             <property name="rightMargin">
+              <number>16</number>
+             </property>
+             <property name="bottomMargin">
+              <number>16</number>
+             </property>
+             <item>
+              <widget class="QLabel" name="graphAlgorithmSummary">
+               <property name="text">
+                <string>🔗 Graph Traversal - O(V + E) - optimizing - 180 ops/s - 87% cache hit</string>
+               </property>
+              </widget>
+             </item>
+            </layout>
+           </widget>
+          </item>
+          
+          <!-- Dynamic Programming Algorithm (Simplified) -->
+          <item>
+           <widget class="QFrame" name="dpAlgorithmCard">
+            <property name="frameShape">
+             <enum>QFrame::Box</enum>
+            </property>
+            <layout class="QHBoxLayout" name="dpAlgorithmLayout">
+             <property name="leftMargin">
+              <number>16</number>
+             </property>
+             <property name="topMargin">
+              <number>16</number>
+             </property>
+             <property name="rightMargin">
+              <number>16</number>
+             </property>
+             <property name="bottomMargin">
+              <number>16</number>
+             </property>
+             <item>
+              <widget class="QLabel" name="dpAlgorithmSummary">
+               <property name="text">
+                <string>📈 Dynamic Programming - O(n²) - running - 85 ops/s - 91% cache hit</string>
+               </property>
+              </widget>
+             </item>
+            </layout>
+           </widget>
+          </item>
+         </layout>
+        </widget>
+       </widget>
+      </item>
+      
+      <!-- Performance Summary Section -->
+      <item>
+       <widget class="QFrame" name="summaryDivider">
+        <property name="frameShape">
+         <enum>QFrame::HLine</enum>
+        </property>
+        <property name="frameShadow">
+         <enum>QFrame::Sunken</enum>
+        </property>
+       </widget>
+      </item>
+      
+      <item>
+       <widget class="QWidget" name="performanceSummaryWidget">
+        <layout class="QVBoxLayout" name="performanceSummaryLayout">
+         <property name="spacing">
+          <number>16</number>
+         </property>
+         
+         <item>
+          <widget class="QLabel" name="performanceSummaryTitle">
+           <property name="text">
+            <string>⚡ System Performance Summary</string>
+           </property>
+          </widget>
+         </item>
+         
+         <item>
+          <widget class="QWidget" name="summaryStatsGrid">
+           <layout class="QGridLayout" name="summaryStatsGridLayout">
+            <property name="spacing">
+             <number>24</number>
+            </property>
+            
+            <!-- Total CPU -->
+            <item row="0" column="0">
+             <widget class="QWidget" name="totalCpuStat">
+              <layout class="QHBoxLayout" name="totalCpuStatLayout">
+               <item>
+                <widget class="QLabel" name="totalCpuLabel">
+                 <property name="text">
+                  <string>Total CPU:</string>
+                 </property>
+                </widget>
+               </item>
+               <item>
+                <spacer name="totalCpuSpacer">
+                 <property name="orientation">
+                  <enum>Qt::Horizontal</enum>
+                 </property>
+                </spacer>
+               </item>
+               <item>
+                <widget class="QLabel" name="totalCpuValue">
+                 <property name="text">
+                  <string>43.2%</string>
+                 </property>
+                </widget>
+               </item>
+              </layout>
+             </widget>
+            </item>
+            
+            <!-- Total Memory -->
+            <item row="0" column="1">
+             <widget class="QWidget" name="totalMemoryStat">
+              <layout class="QHBoxLayout" name="totalMemoryStatLayout">
+               <item>
+                <widget class="QLabel" name="totalMemoryLabel">
+                 <property name="text">
+                  <string>Total Memory:</string>
+                 </property>
+                </widget>
+               </item>
+               <item>
+                <spacer name="totalMemorySpacer">
+                 <property name="orientation">
+                  <enum>Qt::Horizontal</enum>
+                 </property>
+                </spacer>
+               </item>
+               <item>
+                <widget class="QLabel" name="totalMemoryValue">
+                 <property name="text">
+                  <string>67.8%</string>
+                 </property>
+                </widget>
+               </item>
+              </layout>
+             </widget>
+            </item>
+            
+            <!-- Average Latency -->
+            <item row="0" column="2">
+             <widget class="QWidget" name="avgLatencyStat">
+              <layout class="QHBoxLayout" name="avgLatencyStatLayout">
+               <item>
+                <widget class="QLabel" name="avgLatencyLabel">
+                 <property name="text">
+                  <string>Avg Latency:</string>
+                 </property>
+                </widget>
+               </item>
+               <item>
+                <spacer name="avgLatencySpacer">
+                 <property name="orientation">
+                  <enum>Qt::Horizontal</enum>
+                 </property>
+                </spacer>
+               </item>
+               <item>
+                <widget class="QLabel" name="avgLatencyValue">
+                 <property name="text">
+                  <string>6.7ms</string>
+                 </property>
+                </widget>
+               </item>
+              </layout>
+             </widget>
+            </item>
+            
+            <!-- System Status -->
+            <item row="0" column="3">
+             <widget class="QWidget" name="systemStatusStat">
+              <layout class="QHBoxLayout" name="systemStatusStatLayout">
+               <item>
+                <widget class="QLabel" name="systemStatusLabel">
+                 <property name="text">
+                  <string>System Status:</string>
+                 </property>
+                </widget>
+               </item>
+               <item>
+                <spacer name="systemStatusSpacer">
+                 <property name="orientation">
+                  <enum>Qt::Horizontal</enum>
+                 </property>
+                </spacer>
+               </item>
+               <item>
+                <widget class="QLabel" name="systemStatusBadge">
+                 <property name="text">
+                  <string>Optimal</string>
+                 </property>
+                </widget>
+               </item>
+              </layout>
+             </widget>
+            </item>
+           </layout>
+          </widget>
+         </item>
+        </layout>
+       </widget>
+      </item>
+     </layout>
+    </widget>
+   </item>
+  </layout>
+ </widget>
+</ui>

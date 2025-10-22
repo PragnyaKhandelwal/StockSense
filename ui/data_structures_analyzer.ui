@@ -1,0 +1,378 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ui version="4.0">
+ <class>DataStructuresAnalyzer</class>
+ <widget class="QWidget" name="DataStructuresAnalyzer">
+  <property name="geometry">
+   <rect>
+    <x>0</x>
+    <y>0</y>
+    <width>500</width>
+    <height>600</height>
+   </rect>
+  </property>
+  <property name="windowTitle">
+   <string>Data Structures Analyzer</string>
+  </property>
+  
+  <layout class="QVBoxLayout" name="mainLayout">
+   <property name="spacing">
+    <number>20</number>
+   </property>
+   <property name="leftMargin">
+    <number>20</number>
+   </property>
+   <property name="topMargin">
+    <number>20</number>
+   </property>
+   <property name="rightMargin">
+    <number>20</number>
+   </property>
+   <property name="bottomMargin">
+    <number>20</number>
+   </property>
+   
+   <item>
+    <widget class="QFrame" name="analyzerCard">
+     <property name="frameShape">
+      <enum>QFrame::Box</enum>
+     </property>
+     <layout class="QVBoxLayout" name="cardLayout">
+      <property name="spacing">
+       <number>20</number>
+      </property>
+      <property name="leftMargin">
+       <number>24</number>
+      </property>
+      <property name="topMargin">
+       <number>24</number>
+      </property>
+      <property name="rightMargin">
+       <number>24</number>
+      </property>
+      <property name="bottomMargin">
+       <number>24</number>
+      </property>
+      
+      <item>
+       <widget class="QLabel" name="analyzerTitle">
+        <property name="text">
+         <string>Data Structures Analysis</string>
+        </property>
+       </widget>
+      </item>
+      
+      <item>
+       <widget class="QFrame" name="bstAnalysisFrame">
+        <property name="frameShape">
+         <enum>QFrame::Box</enum>
+        </property>
+        <layout class="QVBoxLayout" name="bstAnalysisLayout">
+         <property name="spacing">
+          <number>12</number>
+         </property>
+         <property name="leftMargin">
+          <number>16</number>
+         </property>
+         <property name="topMargin">
+          <number>16</number>
+         </property>
+         <property name="rightMargin">
+          <number>16</number>
+         </property>
+         <property name="bottomMargin">
+          <number>16</number>
+         </property>
+         
+         <item>
+          <widget class="QWidget" name="bstHeader">
+           <layout class="QHBoxLayout" name="bstHeaderLayout">
+            <item>
+             <widget class="QLabel" name="bstIcon">
+              <property name="text">
+               <string>🌳</string>
+              </property>
+              <property name="minimumSize">
+               <size>
+                <width>24</width>
+                <height>24</height>
+               </size>
+              </property>
+             </widget>
+            </item>
+            <item>
+             <widget class="QLabel" name="bstName">
+              <property name="text">
+               <string>BST Price Analysis</string>
+              </property>
+             </widget>
+            </item>
+            <item>
+             <spacer name="bstHeaderSpacer">
+              <property name="orientation">
+               <enum>Qt::Horizontal</enum>
+              </property>
+             </spacer>
+            </item>
+            <item>
+             <widget class="QLabel" name="bstAccuracy">
+              <property name="text">
+               <string>87%</string>
+              </property>
+             </widget>
+            </item>
+           </layout>
+          </widget>
+         </item>
+         <item>
+          <widget class="QLabel" name="bstDescription">
+           <property name="text">
+            <string>Binary search for optimal buy/sell points</string>
+           </property>
+          </widget>
+         </item>
+         <item>
+          <widget class="QLabel" name="bstEfficiency">
+           <property name="text">
+            <string>Efficiency: O(log n)</string>
+           </property>
+          </widget>
+         </item>
+         <item>
+          <widget class="QProgressBar" name="bstAccuracyProgress">
+           <property name="value">
+            <number>87</number>
+           </property>
+           <property name="textVisible">
+            <bool>false</bool>
+           </property>
+          </widget>
+         </item>
+         <item>
+          <widget class="QWidget" name="bstResults">
+           <layout class="QHBoxLayout" name="bstResultsLayout">
+            <item>
+             <widget class="QLabel" name="bstBuySignals">
+              <property name="text">
+               <string>Buy Signals: 3</string>
+              </property>
+             </widget>
+            </item>
+            <item>
+             <widget class="QLabel" name="bstSellSignals">
+              <property name="text">
+               <string>Sell Signals: 2</string>
+              </property>
+             </widget>
+            </item>
+           </layout>
+          </widget>
+         </item>
+        </layout>
+       </widget>
+      </item>
+      
+      <item>
+       <widget class="QFrame" name="hashAnalysisFrame">
+        <property name="frameShape">
+         <enum>QFrame::Box</enum>
+        </property>
+        <layout class="QVBoxLayout" name="hashAnalysisLayout">
+         <property name="spacing">
+          <number>12</number>
+         </property>
+         <property name="leftMargin">
+          <number>16</number>
+         </property>
+         <property name="topMargin">
+          <number>16</number>
+         </property>
+         <property name="rightMargin">
+          <number>16</number>
+         </property>
+         <property name="bottomMargin">
+          <number>16</number>
+         </property>
+         
+         <item>
+          <widget class="QWidget" name="hashHeader">
+           <layout class="QHBoxLayout" name="hashHeaderLayout">
+            <item>
+             <widget class="QLabel" name="hashIcon">
+              <property name="text">
+               <string>🗃️</string>
+              </property>
+              <property name="minimumSize">
+               <size>
+                <width>24</width>
+                <height>24</height>
+               </size>
+              </property>
+             </widget>
+            </item>
+            <item>
+             <widget class="QLabel" name="hashName">
+              <property name="text">
+               <string>Hash-based Correlation</string>
+              </property>
+             </widget>
+            </item>
+            <item>
+             <spacer name="hashHeaderSpacer">
+              <property name="orientation">
+               <enum>Qt::Horizontal</enum>
+              </property>
+             </spacer>
+            </item>
+            <item>
+             <widget class="QLabel" name="hashAccuracy">
+              <property name="text">
+               <string>92%</string>
+              </property>
+             </widget>
+            </item>
+           </layout>
+          </widget>
+         </item>
+         <item>
+          <widget class="QLabel" name="hashDescription">
+           <property name="text">
+            <string>Fast lookup of similar patterns</string>
+           </property>
+          </widget>
+         </item>
+         <item>
+          <widget class="QLabel" name="hashEfficiency">
+           <property name="text">
+            <string>Efficiency: O(1)</string>
+           </property>
+          </widget>
+         </item>
+         <item>
+          <widget class="QProgressBar" name="hashAccuracyProgress">
+           <property name="value">
+            <number>92</number>
+           </property>
+           <property name="textVisible">
+            <bool>false</bool>
+           </property>
+          </widget>
+         </item>
+         <item>
+          <widget class="QWidget" name="hashResults">
+           <layout class="QHBoxLayout" name="hashResultsLayout">
+            <item>
+             <widget class="QLabel" name="hashSimilarPatterns">
+              <property name="text">
+               <string>Similar Patterns: 15</string>
+              </property>
+             </widget>
+            </item>
+            <item>
+             <widget class="QLabel" name="hashStrongCorrelations">
+              <property name="text">
+               <string>Strong: 8</string>
+              </property>
+             </widget>
+            </item>
+           </layout>
+          </widget>
+         </item>
+        </layout>
+       </widget>
+      </item>
+      
+      <item>
+       <widget class="QFrame" name="priorityQueueAnalysisFrame">
+        <property name="frameShape">
+         <enum>QFrame::Box</enum>
+        </property>
+        <layout class="QVBoxLayout" name="priorityQueueAnalysisLayout">
+         <property name="spacing">
+          <number>12</number>
+         </property>
+         <property name="leftMargin">
+          <number>16</number>
+         </property>
+         <property name="topMargin">
+          <number>16</number>
+         </property>
+         <property name="rightMargin">
+          <number>16</number>
+         </property>
+         <property name="bottomMargin">
+          <number>16</number>
+         </property>
+         
+         <item>
+          <widget class="QWidget" name="priorityQueueHeader">
+           <layout class="QHBoxLayout" name="priorityQueueHeaderLayout">
+            <item>
+             <widget class="QLabel" name="priorityQueueIcon">
+              <property name="text">
+               <string>⚡</string>
+              </property>
+              <property name="minimumSize">
+               <size>
+                <width>24</width>
+                <height>24</height>
+               </size>
+              </property>
+             </widget>
+            </item>
+            <item>
+             <widget class="QLabel" name="priorityQueueName">
+              <property name="text">
+               <string>Priority Alert System</string>
+              </property>
+             </widget>
+            </item>
+            <item>
+             <spacer name="priorityQueueHeaderSpacer">
+              <property name="orientation">
+               <enum>Qt::Horizontal</enum>
+              </property>
+             </spacer>
+            </item>
+            <item>
+             <widget class="QLabel" name="priorityQueueAccuracy">
+              <property name="text">
+               <string>89%</string>
+              </property>
+             </widget>
+            </item>
+           </layout>
+          </widget>
+         </item>
+         <item>
+          <widget class="QLabel" name="priorityQueueDescription">
+           <property name="text">
+            <string>Priority-based alert management</string>
+           </property>
+          </widget>
+         </item>
+         <item>
+          <widget class="QLabel" name="priorityQueueEfficiency">
+           <property name="text">
+            <string>Efficiency: O(log n)</string>
+           </property>
+          </widget>
+         </item>
+         <item>
+          <widget class="QProgressBar" name="priorityQueueProgress">
+           <property name="value">
+            <number>89</number>
+           </property>
+           <property name="textVisible">
+            <bool>false</bool>
+           </property>
+          </widget>
+         </item>
+        </layout>
+       </widget>
+      </item>
+     </layout>
+    </widget>
+   </item>
+  </layout>
+ </widget>
+</ui>

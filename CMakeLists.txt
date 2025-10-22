@@ -1,90 +1,43 @@
 cmake_minimum_required(VERSION 3.16)
-project(QtApp VERSION 1.0.0 LANGUAGES CXX)
+project(StockSenseQt VERSION 1.0.0 LANGUAGES CXX)
 
-# Generate compile_commands.json for better IDE support
-set(CMAKE_EXPORT_COMPILE_COMMANDS ON)
-
-# Set C++ standard
 set(CMAKE_CXX_STANDARD 17)
 set(CMAKE_CXX_STANDARD_REQUIRED ON)
 
 # Qt settings
 set(CMAKE_AUTOMOC ON)
-set(CMAKE_AUTOUIC ON)
-set(CMAKE_AUTORCC OFF)
 
-# Set Qt path - FIXED: Changed from 6.5.10 to 6.5.3
+# Set Qt path
 if(NOT DEFINED CMAKE_PREFIX_PATH)
     set(CMAKE_PREFIX_PATH "C:/Qt/6.5.3/mingw_64")
 endif()
 
-# Set compiler paths for consistency
-if(NOT CMAKE_CXX_COMPILER)
-    set(CMAKE_CXX_COMPILER "C:/Qt/Tools/mingw1120_64/bin/g++.exe")
+# Try to find Qt Charts, if not available, build without it
+find_package(Qt6 REQUIRED COMPONENTS Core Widgets)
+find_package(Qt6 QUIET COMPONENTS Charts)
+
+if(Qt6Charts_FOUND)
+    message(STATUS "✅ Qt Charts found - Building with real charts")
+    set(HAVE_CHARTS TRUE)
+else()
+    message(STATUS "❌ Qt Charts not found - Building with custom charts")
+    set(HAVE_CHARTS FALSE)
 endif()
-if(NOT CMAKE_C_COMPILER)
-    set(CMAKE_C_COMPILER "C:/Qt/Tools/mingw1120_64/bin/gcc.exe")
-endif()
-
-# Add include directories
-include_directories("${CMAKE_CURRENT_SOURCE_DIR}/include")
-
-# Set UI files directory for AUTOUIC  
-set(CMAKE_AUTOUIC_SEARCH_PATHS "${CMAKE_CURRENT_SOURCE_DIR}/ui")
-
-# Find Qt6 components
-find_package(Qt6 REQUIRED COMPONENTS 
-    Core 
-    Widgets 
-    Gui
-    Charts
-    Network
-)
-
-# Collect source files
-file(GLOB_RECURSE SOURCES "src/*.cpp")
-file(GLOB_RECURSE HEADERS "include/*.h")
-file(GLOB_RECURSE UI_FILES "ui/*.ui")
 
 # Create executable
-add_executable(QtApp
-    ${SOURCES}
-    ${HEADERS}
-    ${UI_FILES}
-)
+add_executable(StockSenseQt src/main.cpp)
 
 # Link Qt libraries
-target_link_libraries(QtApp PRIVATE 
-    Qt6::Core
-    Qt6::Widgets 
-    Qt6::Gui
-    Qt6::Charts
-    Qt6::Network
-)
+target_link_libraries(StockSenseQt PRIVATE Qt6::Core Qt6::Widgets)
 
-# Set target properties
-set_target_properties(QtApp PROPERTIES
-    WIN32_EXECUTABLE TRUE
-    MACOSX_BUNDLE TRUE
-    VERSION ${PROJECT_VERSION}
-)
-
-# Include directories
-target_include_directories(QtApp PRIVATE
-    "${CMAKE_CURRENT_SOURCE_DIR}/include"
-    "${CMAKE_CURRENT_BINARY_DIR}"
-    ${Qt6_Core_INCLUDE_DIRS}
-    ${Qt6_Widgets_INCLUDE_DIRS}
-    ${Qt6_Gui_INCLUDE_DIRS}
-    ${Qt6_Charts_INCLUDE_DIRS}
-    ${Qt6_Network_INCLUDE_DIRS}
-)
-
-# Copy Qt DLLs to output directory on Windows
-if(WIN32)
-    add_custom_command(TARGET QtApp POST_BUILD
-        COMMAND ${CMAKE_COMMAND} -E env PATH="${CMAKE_PREFIX_PATH}/bin" 
-        ${CMAKE_PREFIX_PATH}/bin/windeployqt.exe 
-        "$<TARGET_FILE:QtApp>"
-        COMMENT "Copying Qt libraries")
+if(HAVE_CHARTS)
+    target_link_libraries(StockSenseQt PRIVATE Qt6::Charts)
+    target_compile_definitions(StockSenseQt PRIVATE HAVE_QT_CHARTS)
 endif()
+
+# Set properties
+set_target_properties(StockSenseQt PROPERTIES WIN32_EXECUTABLE TRUE)
+
+message(STATUS "🚀 StockSense Build Configuration")
+message(STATUS "📊 Charts Support: ${HAVE_CHARTS}")
+message(STATUS "⚡ Qt Version: ${Qt6_VERSION}")

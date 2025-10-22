@@ -1,0 +1,655 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ui version="4.0">
+ <class>EnhancedSettings</class>
+ <widget class="QWidget" name="EnhancedSettings">
+  <property name="geometry">
+   <rect>
+    <x>0</x>
+    <y>0</y>
+    <width>900</width>
+    <height>800</height>
+   </rect>
+  </property>
+  <property name="windowTitle">
+   <string>Enhanced Settings</string>
+  </property>
+  
+  <layout class="QVBoxLayout" name="mainLayout">
+   <property name="spacing">
+    <number>24</number>
+   </property>
+   <property name="leftMargin">
+    <number>24</number>
+   </property>
+   <property name="topMargin">
+    <number>24</number>
+   </property>
+   <property name="rightMargin">
+    <number>24</number>
+   </property>
+   <property name="bottomMargin">
+    <number>24</number>
+   </property>
+   
+   <item>
+    <widget class="QScrollArea" name="settingsScrollArea">
+     <property name="frameShape">
+      <enum>QFrame::NoFrame</enum>
+     </property>
+     <property name="widgetResizable">
+      <bool>true</bool>
+     </property>
+     <widget class="QWidget" name="scrollAreaWidget">
+      <property name="geometry">
+       <rect>
+        <x>0</x>
+        <y>0</y>
+        <width>852</width>
+        <height>752</height>
+       </rect>
+      </property>
+      <layout class="QVBoxLayout" name="scrollLayout">
+       <property name="spacing">
+        <number>24</number>
+       </property>
+       
+       <item>
+        <widget class="QLabel" name="settingsMainTitle">
+         <property name="text">
+          <string>⚙️ Application Settings</string>
+         </property>
+        </widget>
+       </item>
+       
+       <item>
+        <widget class="QFrame" name="notificationsCard">
+         <property name="frameShape">
+          <enum>QFrame::Box</enum>
+         </property>
+         <layout class="QVBoxLayout" name="notificationsCardLayout">
+          <property name="spacing">
+           <number>16</number>
+          </property>
+          <property name="leftMargin">
+           <number>20</number>
+          </property>
+          <property name="topMargin">
+           <number>20</number>
+          </property>
+          <property name="rightMargin">
+           <number>20</number>
+          </property>
+          <property name="bottomMargin">
+           <number>20</number>
+          </property>
+          
+          <item>
+           <widget class="QWidget" name="notificationsHeader">
+            <layout class="QHBoxLayout" name="notificationsHeaderLayout">
+             <item>
+              <widget class="QLabel" name="notificationsIcon">
+               <property name="text">
+                <string>🔔</string>
+               </property>
+              </widget>
+             </item>
+             <item>
+              <widget class="QLabel" name="notificationsTitle">
+               <property name="text">
+                <string>Notifications</string>
+               </property>
+              </widget>
+             </item>
+            </layout>
+           </widget>
+          </item>
+          
+          <item>
+           <widget class="QWidget" name="generalNotificationsSetting">
+            <layout class="QHBoxLayout" name="generalNotificationsLayout">
+             <item>
+              <widget class="QWidget" name="generalNotificationsInfo">
+               <layout class="QVBoxLayout" name="generalNotificationsInfoLayout">
+                <property name="spacing">
+                 <number>4</number>
+                </property>
+                <item>
+                 <widget class="QLabel" name="generalNotificationsLabel">
+                  <property name="text">
+                   <string>General Notifications</string>
+                  </property>
+                 </widget>
+                </item>
+                <item>
+                 <widget class="QLabel" name="generalNotificationsDescription">
+                  <property name="text">
+                   <string>Receive notifications for important updates</string>
+                  </property>
+                 </widget>
+                </item>
+               </layout>
+              </widget>
+             </item>
+             <item>
+              <spacer name="generalNotificationsSpacer">
+               <property name="orientation">
+                <enum>Qt::Horizontal</enum>
+               </property>
+              </spacer>
+             </item>
+             <item>
+              <widget class="QCheckBox" name="generalNotificationsCheckBox">
+               <property name="checked">
+                <bool>true</bool>
+               </property>
+              </widget>
+             </item>
+            </layout>
+           </widget>
+          </item>
+          
+          <item>
+           <widget class="QWidget" name="priceAlertsSetting">
+            <layout class="QHBoxLayout" name="priceAlertsLayout">
+             <item>
+              <widget class="QWidget" name="priceAlertsInfo">
+               <layout class="QVBoxLayout" name="priceAlertsInfoLayout">
+                <property name="spacing">
+                 <number>4</number>
+                </property>
+                <item>
+                 <widget class="QLabel" name="priceAlertsLabel">
+                  <property name="text">
+                   <string>Price Alerts</string>
+                  </property>
+                 </widget>
+                </item>
+                <item>
+                 <widget class="QLabel" name="priceAlertsDescription">
+                  <property name="text">
+                   <string>Get notified when stocks reach target prices</string>
+                  </property>
+                 </widget>
+                </item>
+               </layout>
+              </widget>
+             </item>
+             <item>
+              <spacer name="priceAlertsSpacer">
+               <property name="orientation">
+                <enum>Qt::Horizontal</enum>
+               </property>
+              </spacer>
+             </item>
+             <item>
+              <widget class="QCheckBox" name="priceAlertsCheckBox">
+               <property name="checked">
+                <bool>true</bool>
+               </property>
+              </widget>
+             </item>
+            </layout>
+           </widget>
+          </item>
+          
+          <item>
+           <widget class="QWidget" name="newsAlertsSetting">
+            <layout class="QHBoxLayout" name="newsAlertsLayout">
+             <item>
+              <widget class="QWidget" name="newsAlertsInfo">
+               <layout class="QVBoxLayout" name="newsAlertsInfoLayout">
+                <property name="spacing">
+                 <number>4</number>
+                </property>
+                <item>
+                 <widget class="QLabel" name="newsAlertsLabel">
+                  <property name="text">
+                   <string>Breaking News Alerts</string>
+                  </property>
+                 </widget>
+                </item>
+                <item>
+                 <widget class="QLabel" name="newsAlertsDescription">
+                  <property name="text">
+                   <string>Receive notifications for breaking financial news</string>
+                  </property>
+                 </widget>
+                </item>
+               </layout>
+              </widget>
+             </item>
+             <item>
+              <spacer name="newsAlertsSpacer">
+               <property name="orientation">
+                <enum>Qt::Horizontal</enum>
+               </property>
+              </spacer>
+             </item>
+             <item>
+              <widget class="QCheckBox" name="newsAlertsCheckBox">
+               <property name="checked">
+                <bool>false</bool>
+               </property>
+              </widget>
+             </item>
+            </layout>
+           </widget>
+          </item>
+         </layout>
+        </widget>
+       </item>
+       
+       <item>
+        <widget class="QFrame" name="dataDisplayCard">
+         <property name="frameShape">
+          <enum>QFrame::Box</enum>
+         </property>
+         <layout class="QVBoxLayout" name="dataDisplayCardLayout">
+          <property name="spacing">
+           <number>16</number>
+          </property>
+          <property name="leftMargin">
+           <number>20</number>
+          </property>
+          <property name="topMargin">
+           <number>20</number>
+          </property>
+          <property name="rightMargin">
+           <number>20</number>
+          </property>
+          <property name="bottomMargin">
+           <number>20</number>
+          </property>
+          
+          <item>
+           <widget class="QWidget" name="dataDisplayHeader">
+            <layout class="QHBoxLayout" name="dataDisplayHeaderLayout">
+             <item>
+              <widget class="QLabel" name="dataDisplayIcon">
+               <property name="text">
+                <string>🔄</string>
+               </property>
+              </widget>
+             </item>
+             <item>
+              <widget class="QLabel" name="dataDisplayTitle">
+               <property name="text">
+                <string>Data &amp; Display</string>
+               </property>
+              </widget>
+             </item>
+            </layout>
+           </widget>
+          </item>
+          
+          <item>
+           <widget class="QWidget" name="refreshIntervalSetting">
+            <layout class="QHBoxLayout" name="refreshIntervalLayout">
+             <item>
+              <widget class="QWidget" name="refreshIntervalInfo">
+               <layout class="QVBoxLayout" name="refreshIntervalInfoLayout">
+                <property name="spacing">
+                 <number>4</number>
+                </property>
+                <item>
+                 <widget class="QLabel" name="refreshIntervalLabel">
+                  <property name="text">
+                   <string>Refresh Interval</string>
+                  </property>
+                 </widget>
+                </item>
+                <item>
+                 <widget class="QLabel" name="refreshIntervalDescription">
+                  <property name="text">
+                   <string>How often to refresh stock prices and data</string>
+                  </property>
+                 </widget>
+                </item>
+               </layout>
+              </widget>
+             </item>
+             <item>
+              <spacer name="refreshIntervalSpacer">
+               <property name="orientation">
+                <enum>Qt::Horizontal</enum>
+               </property>
+              </spacer>
+             </item>
+             <item>
+              <widget class="QComboBox" name="refreshIntervalComboBox">
+               <item>
+                <property name="text">
+                 <string>5 seconds</string>
+                </property>
+               </item>
+               <item>
+                <property name="text">
+                 <string>15 seconds</string>
+                </property>
+               </item>
+               <item>
+                <property name="text">
+                 <string>30 seconds</string>
+                </property>
+               </item>
+               <item>
+                <property name="text">
+                 <string>1 minute</string>
+                </property>
+               </item>
+               <item>
+                <property name="text">
+                 <string>5 minutes</string>
+                </property>
+               </item>
+              </widget>
+             </item>
+            </layout>
+           </widget>
+          </item>
+          
+          <item>
+           <widget class="QWidget" name="currencySetting">
+            <layout class="QHBoxLayout" name="currencyLayout">
+             <item>
+              <widget class="QLabel" name="currencyLabel">
+               <property name="text">
+                <string>Currency</string>
+               </property>
+              </widget>
+             </item>
+             <item>
+              <spacer name="currencySpacer">
+               <property name="orientation">
+                <enum>Qt::Horizontal</enum>
+               </property>
+              </spacer>
+             </item>
+             <item>
+              <widget class="QComboBox" name="currencyComboBox">
+               <item>
+                <property name="text">
+                 <string>INR (₹)</string>
+                </property>
+               </item>
+               <item>
+                <property name="text">
+                 <string>USD ($)</string>
+                </property>
+               </item>
+               <item>
+                <property name="text">
+                 <string>EUR (€)</string>
+                </property>
+               </item>
+               <item>
+                <property name="text">
+                 <string>GBP (£)</string>
+                </property>
+               </item>
+              </widget>
+             </item>
+            </layout>
+           </widget>
+          </item>
+          
+          <item>
+           <widget class="QWidget" name="timezoneSetting">
+            <layout class="QHBoxLayout" name="timezoneLayout">
+             <item>
+              <widget class="QLabel" name="timezoneLabel">
+               <property name="text">
+                <string>Timezone</string>
+               </property>
+              </widget>
+             </item>
+             <item>
+              <spacer name="timezoneSpacer">
+               <property name="orientation">
+                <enum>Qt::Horizontal</enum>
+               </property>
+              </spacer>
+             </item>
+             <item>
+              <widget class="QComboBox" name="timezoneComboBox">
+               <item>
+                <property name="text">
+                 <string>Asia/Kolkata (IST)</string>
+                </property>
+               </item>
+               <item>
+                <property name="text">
+                 <string>America/New_York (EST)</string>
+                </property>
+               </item>
+               <item>
+                <property name="text">
+                 <string>Europe/London (GMT)</string>
+                </property>
+               </item>
+               <item>
+                <property name="text">
+                 <string>Asia/Tokyo (JST)</string>
+                </property>
+               </item>
+              </widget>
+             </item>
+            </layout>
+           </widget>
+          </item>
+          
+          <item>
+           <widget class="QWidget" name="compactModeSetting">
+            <layout class="QHBoxLayout" name="compactModeLayout">
+             <item>
+              <widget class="QWidget" name="compactModeInfo">
+               <layout class="QVBoxLayout" name="compactModeInfoLayout">
+                <property name="spacing">
+                 <number>4</number>
+                </property>
+                <item>
+                 <widget class="QLabel" name="compactModeLabel">
+                  <property name="text">
+                   <string>Compact Mode</string>
+                  </property>
+                 </widget>
+                </item>
+                <item>
+                 <widget class="QLabel" name="compactModeDescription">
+                  <property name="text">
+                   <string>Show more data in less space</string>
+                  </property>
+                 </widget>
+                </item>
+               </layout>
+              </widget>
+             </item>
+             <item>
+              <spacer name="compactModeSpacer">
+               <property name="orientation">
+                <enum>Qt::Horizontal</enum>
+               </property>
+              </spacer>
+             </item>
+             <item>
+              <widget class="QCheckBox" name="compactModeCheckBox">
+               <property name="checked">
+                <bool>false</bool>
+               </property>
+              </widget>
+             </item>
+            </layout>
+           </widget>
+          </item>
+         </layout>
+        </widget>
+       </item>
+       
+       <item>
+        <widget class="QFrame" name="privacySecurityCard">
+         <property name="frameShape">
+          <enum>QFrame::Box</enum>
+         </property>
+         <layout class="QVBoxLayout" name="privacySecurityCardLayout">
+          <property name="spacing">
+           <number>16</number>
+          </property>
+          <property name="leftMargin">
+           <number>20</number>
+          </property>
+          <property name="topMargin">
+           <number>20</number>
+          </property>
+          <property name="rightMargin">
+           <number>20</number>
+          </property>
+          <property name="bottomMargin">
+           <number>20</number>
+          </property>
+          
+          <item>
+           <widget class="QWidget" name="privacySecurityHeader">
+            <layout class="QHBoxLayout" name="privacySecurityHeaderLayout">
+             <item>
+              <widget class="QLabel" name="privacySecurityIcon">
+               <property name="text">
+                <string>🔒</string>
+               </property>
+              </widget>
+             </item>
+             <item>
+              <widget class="QLabel" name="privacySecurityTitle">
+               <property name="text">
+                <string>Privacy &amp; Security</string>
+               </property>
+              </widget>
+             </item>
+            </layout>
+           </widget>
+          </item>
+          
+          <item>
+           <widget class="QWidget" name="analyticsDataSetting">
+            <layout class="QHBoxLayout" name="analyticsDataLayout">
+             <item>
+              <widget class="QWidget" name="analyticsDataInfo">
+               <layout class="QVBoxLayout" name="analyticsDataInfoLayout">
+                <property name="spacing">
+                 <number>4</number>
+                </property>
+                <item>
+                 <widget class="QLabel" name="analyticsDataLabel">
+                  <property name="text">
+                   <string>Share Analytics Data</string>
+                  </property>
+                 </widget>
+                </item>
+                <item>
+                 <widget class="QLabel" name="analyticsDataDescription">
+                  <property name="text">
+                   <string>Help improve the app by sharing anonymous usage data</string>
+                  </property>
+                 </widget>
+                </item>
+               </layout>
+              </widget>
+             </item>
+             <item>
+              <spacer name="analyticsDataSpacer">
+               <property name="orientation">
+                <enum>Qt::Horizontal</enum>
+               </property>
+              </spacer>
+             </item>
+             <item>
+              <widget class="QCheckBox" name="analyticsDataCheckBox">
+               <property name="checked">
+                <bool>true</bool>
+               </property>
+              </widget>
+             </item>
+            </layout>
+           </widget>
+          </item>
+          
+          <item>
+           <widget class="QWidget" name="crashReportsSetting">
+            <layout class="QHBoxLayout" name="crashReportsLayout">
+             <item>
+              <widget class="QWidget" name="crashReportsInfo">
+               <layout class="QVBoxLayout" name="crashReportsInfoLayout">
+                <property name="spacing">
+                 <number>4</number>
+                </property>
+                <item>
+                 <widget class="QLabel" name="crashReportsLabel">
+                  <property name="text">
+                   <string>Crash Reports</string>
+                  </property>
+                 </widget>
+                </item>
+                <item>
+                 <widget class="QLabel" name="crashReportsDescription">
+                  <property name="text">
+                   <string>Send crash reports to help fix issues</string>
+                  </property>
+                 </widget>
+                </item>
+               </layout>
+              </widget>
+             </item>
+             <item>
+              <spacer name="crashReportsSpacer">
+               <property name="orientation">
+                <enum>Qt::Horizontal</enum>
+               </property>
+              </spacer>
+             </item>
+             <item>
+              <widget class="QCheckBox" name="crashReportsCheckBox">
+               <property name="checked">
+                <bool>true</bool>
+               </property>
+              </widget>
+             </item>
+            </layout>
+           </widget>
+          </item>
+         </layout>
+        </widget>
+       </item>
+       
+       <item>
+        <widget class="QWidget" name="actionButtons">
+         <layout class="QHBoxLayout" name="actionButtonsLayout">
+          <item>
+           <spacer name="actionButtonsSpacer">
+            <property name="orientation">
+             <enum>Qt::Horizontal</enum>
+            </property>
+           </spacer>
+          </item>
+          <item>
+           <widget class="QPushButton" name="resetButton">
+            <property name="text">
+             <string>Reset to Defaults</string>
+            </property>
+           </widget>
+          </item>
+          <item>
+           <widget class="QPushButton" name="saveButton">
+            <property name="text">
+             <string>💾 Save Settings</string>
+            </property>
+           </widget>
+          </item>
+         </layout>
+        </widget>
+       </item>
+      </layout>
+     </widget>
+    </widget>
+   </item>
+  </layout>
+ </widget>
+</ui>
