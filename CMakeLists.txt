@@ -89,3 +89,7 @@ if(WIN32)
             COMMENT "Copying Qt libraries")
     endif()
 endif()
+
+message(STATUS "🚀 StockSense Build Configuration")
+message(STATUS "📊 Charts Support: Qt6Charts Found")
+message(STATUS "⚡ Qt Version: ${Qt6_VERSION}")

@@ -1546,22 +1546,105 @@ void MainWindow::setupPredictionsPage()
 {
     auto predictionsPage = new QWidget;
     auto layout = new QVBoxLayout(predictionsPage);
-    layout->setContentsMargins(24, 24, 24, 24);
-    layout->setSpacing(20);
-    
-    auto titleLabel = new QLabel("🔮 AI Predictions & Forecasts");
-    titleLabel->setStyleSheet("font-size: 28px; font-weight: bold; color: #1f2937;");
+    layout->setContentsMargins(20, 20, 20, 20);  // REDUCED from 24
+    layout->setSpacing(16);  // REDUCED from 20
+
+    auto titleLabel = new QLabel("🧠 AI Predictions & Forecasts");
+    titleLabel->setStyleSheet("font-size: 24px; font-weight: bold; color: #1f2937;");  // REDUCED from 28px
     layout->addWidget(titleLabel);
+
+    // Time range controls
+    auto timeRangeWidget = new QWidget;
+    auto timeRangeLayout = new QHBoxLayout(timeRangeWidget);
+    timeRangeLayout->setSpacing(12);
     
-    auto predictionsCard = createDashboardCard("Machine Learning Models", "#8b5cf6");
-    auto cardLayout = qobject_cast<QVBoxLayout*>(predictionsCard->layout());
+    auto rangeLabel = new QLabel("Prediction Range:");
+    rangeLabel->setStyleSheet("font-weight: 600; color: #374151; font-size: 14px;");
     
-    auto placeholderLabel = new QLabel("🚧 AI-Powered Stock Predictions\nML Models, Confidence Scores, Price Targets\n(Implementation matching React Predictions component)");
-    placeholderLabel->setStyleSheet("color: #6b7280; text-align: center; padding: 60px;");
-    placeholderLabel->setAlignment(Qt::AlignCenter);
-    cardLayout->addWidget(placeholderLabel);
+    QStringList timeRanges = {"7 Days", "15 Days", "30 Days", "60 Days"};
+    for (const QString &range : timeRanges) {
+        auto btn = new QPushButton(range);
+        btn->setCheckable(true);
+        btn->setFixedHeight(32);  // SMALLER height
+        btn->setStyleSheet(R"(
+            QPushButton {
+                background-color: #f3f4f6;
+                border: 1px solid #d1d5db;
+                border-radius: 8px;
+                color: #374151;
+                padding: 8px 16px;
+                font-size: 12px;
+                font-weight: 600;
+            }
+            QPushButton:checked {
+                background-color: #3b82f6;
+                color: #ffffff;
+            }
+        )");
+        timeRangeLayout->addWidget(btn);
+        if (range == "30 Days") btn->setChecked(true);
+    }
+    timeRangeLayout->addStretch();
+    layout->addWidget(timeRangeWidget);
+
+    // Price summary cards - SMALLER
+    auto summaryWidget = new QWidget;
+    auto summaryLayout = new QHBoxLayout(summaryWidget);
+    summaryLayout->setSpacing(16);  // REDUCED spacing
     
-    layout->addWidget(predictionsCard);
+    QStringList cardTitles = {"Current Price", "AI Prediction", "Expected Change"};
+    QStringList cardValues = {"₹2,847.50", "₹2,945.80", "+3.45%"};
+    QStringList cardColors = {"#f8fafc", "#eff6ff", "#f0fdf4"};
+    
+    for (int i = 0; i < 3; ++i) {
+        auto card = new QFrame;
+        card->setFixedHeight(120);  // REDUCED height
+        card->setStyleSheet(QString(R"(
+            QFrame {
+                background-color: %1;
+                border: 1px solid #e5e7eb;
+                border-radius: 12px;
+                padding: 16px;
+            }
+        )").arg(cardColors[i]));
+        
+        auto cardLayout = new QVBoxLayout(card);
+        cardLayout->setSpacing(8);
+        
+        auto title = new QLabel(cardTitles[i]);
+        title->setStyleSheet("font-size: 12px; color: #6b7280; font-weight: 500;");
+        title->setAlignment(Qt::AlignCenter);
+        
+        auto value = new QLabel(cardValues[i]);
+        value->setStyleSheet("font-size: 24px; font-weight: bold; color: #1f2937;");  // REDUCED from larger
+        value->setAlignment(Qt::AlignCenter);
+        
+        cardLayout->addWidget(title);
+        cardLayout->addWidget(value);
+        
+        summaryLayout->addWidget(card);
+    }
+    layout->addWidget(summaryWidget);
+
+    // Chart area
+    auto chartCard = createDashboardCard("📈 Prediction Chart", "#8b5cf6");
+    chartCard->setFixedHeight(280);  // FIXED reasonable height
+    auto cardLayout = qobject_cast<QVBoxLayout*>(chartCard->layout());
+    
+    auto chartArea = new QWidget;
+    chartArea->setStyleSheet("background-color: #f8fafc; border-radius: 8px;");
+    auto chartAreaLayout = new QVBoxLayout(chartArea);
+    chartAreaLayout->setContentsMargins(20, 20, 20, 20);
+    
+    auto chartLabel = new QLabel("📊 AI Model Predictions\n\n🔹 Historical Data Analysis\n🔸 Machine Learning Forecast\n🔹 Confidence Intervals");
+    chartLabel->setAlignment(Qt::AlignCenter);
+    chartLabel->setStyleSheet("color: #6b7280; font-size: 14px; line-height: 1.6;");
+    chartAreaLayout->addWidget(chartLabel);
+    
+    cardLayout->addWidget(chartArea);
+    layout->addWidget(chartCard);
+    
+    layout->addStretch();
     m_stackedWidget->addWidget(predictionsPage);
 }
 

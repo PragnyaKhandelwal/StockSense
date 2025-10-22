@@ -1,0 +1,367 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ui version="4.0">
+ <class>QuickStats</class>
+ <widget class="QWidget" name="QuickStats">
+  <property name="geometry">
+   <rect>
+    <x>0</x>
+    <y>0</y>
+    <width>700</width>
+    <height>200</height>
+   </rect>
+  </property>
+  <property name="windowTitle">
+   <string>Quick Stats</string>
+  </property>
+  
+  <layout class="QHBoxLayout" name="quickStatsLayout">
+   <property name="spacing">
+    <number>16</number>
+   </property>
+   <property name="leftMargin">
+    <number>16</number>
+   </property>
+   <property name="topMargin">
+    <number>16</number>
+   </property>
+   <property name="rightMargin">
+    <number>16</number>
+   </property>
+   <property name="bottomMargin">
+    <number>16</number>
+   </property>
+   
+   <!-- Market Cap Card -->
+   <item>
+    <widget class="QFrame" name="marketCapCard">
+     <property name="frameShape">
+      <enum>QFrame::Box</enum>
+     </property>
+     <layout class="QVBoxLayout" name="marketCapLayout">
+      <property name="spacing">
+       <number>12</number>
+      </property>
+      <property name="leftMargin">
+       <number>20</number>
+      </property>
+      <property name="topMargin">
+       <number>20</number>
+      </property>
+      <property name="rightMargin">
+       <number>20</number>
+      </property>
+      <property name="bottomMargin">
+       <number>20</number>
+      </property>
+      
+      <item>
+       <widget class="QWidget" name="marketCapHeader">
+        <layout class="QHBoxLayout" name="marketCapHeaderLayout">
+         <item>
+          <widget class="QLabel" name="marketCapIcon">
+           <property name="text">
+            <string>💰</string>
+           </property>
+           <property name="minimumSize">
+            <size>
+             <width>24</width>
+             <height>24</height>
+            </size>
+           </property>
+          </widget>
+         </item>
+         <item>
+          <widget class="QLabel" name="marketCapTitle">
+           <property name="text">
+            <string>Market Cap</string>
+           </property>
+          </widget>
+         </item>
+        </layout>
+       </widget>
+      </item>
+      <item>
+       <widget class="QLabel" name="marketCapValue">
+        <property name="text">
+         <string>$2.89T</string>
+        </property>
+        <property name="alignment">
+         <set>Qt::AlignCenter</set>
+        </property>
+       </widget>
+      </item>
+      <item>
+       <widget class="QWidget" name="marketCapChange">
+        <layout class="QHBoxLayout" name="marketCapChangeLayout">
+         <item>
+          <widget class="QLabel" name="marketCapTrendIcon">
+           <property name="text">
+            <string>📈</string>
+           </property>
+          </widget>
+         </item>
+         <item>
+          <widget class="QLabel" name="marketCapChangeValue">
+           <property name="text">
+            <string>+2.1%</string>
+           </property>
+          </widget>
+         </item>
+        </layout>
+       </widget>
+      </item>
+     </layout>
+    </widget>
+   </item>
+   
+   <!-- 52W High Card -->
+   <item>
+    <widget class="QFrame" name="weekHighCard">
+     <property name="frameShape">
+      <enum>QFrame::Box</enum>
+     </property>
+     <layout class="QVBoxLayout" name="weekHighLayout">
+      <property name="spacing">
+       <number>12</number>
+      </property>
+      <property name="leftMargin">
+       <number>20</number>
+      </property>
+      <property name="topMargin">
+       <number>20</number>
+      </property>
+      <property name="rightMargin">
+       <number>20</number>
+      </property>
+      <property name="bottomMargin">
+       <number>20</number>
+      </property>
+      
+      <item>
+       <widget class="QWidget" name="weekHighHeader">
+        <layout class="QHBoxLayout" name="weekHighHeaderLayout">
+         <item>
+          <widget class="QLabel" name="weekHighIcon">
+           <property name="text">
+            <string>📈</string>
+           </property>
+           <property name="minimumSize">
+            <size>
+             <width>24</width>
+             <height>24</height>
+            </size>
+           </property>
+          </widget>
+         </item>
+         <item>
+          <widget class="QLabel" name="weekHighTitle">
+           <property name="text">
+            <string>52W High</string>
+           </property>
+          </widget>
+         </item>
+        </layout>
+       </widget>
+      </item>
+      <item>
+       <widget class="QLabel" name="weekHighValue">
+        <property name="text">
+         <string>$198.23</string>
+        </property>
+        <property name="alignment">
+         <set>Qt::AlignCenter</set>
+        </property>
+       </widget>
+      </item>
+      <item>
+       <widget class="QWidget" name="weekHighChange">
+        <layout class="QHBoxLayout" name="weekHighChangeLayout">
+         <item>
+          <widget class="QLabel" name="weekHighTrendIcon">
+           <property name="text">
+            <string>📉</string>
+           </property>
+          </widget>
+         </item>
+         <item>
+          <widget class="QLabel" name="weekHighChangeValue">
+           <property name="text">
+            <string>-7.9%</string>
+           </property>
+          </widget>
+         </item>
+        </layout>
+       </widget>
+      </item>
+     </layout>
+    </widget>
+   </item>
+   
+   <!-- 52W Low Card -->
+   <item>
+    <widget class="QFrame" name="weekLowCard">
+     <property name="frameShape">
+      <enum>QFrame::Box</enum>
+     </property>
+     <layout class="QVBoxLayout" name="weekLowLayout">
+      <property name="spacing">
+       <number>12</number>
+      </property>
+      <property name="leftMargin">
+       <number>20</number>
+      </property>
+      <property name="topMargin">
+       <number>20</number>
+      </property>
+      <property name="rightMargin">
+       <number>20</number>
+      </property>
+      <property name="bottomMargin">
+       <number>20</number>
+      </property>
+      
+      <item>
+       <widget class="QWidget" name="weekLowHeader">
+        <layout class="QHBoxLayout" name="weekLowHeaderLayout">
+         <item>
+          <widget class="QLabel" name="weekLowIcon">
+           <property name="text">
+            <string>📉</string>
+           </property>
+           <property name="minimumSize">
+            <size>
+             <width>24</width>
+             <height>24</height>
+            </size>
+           </property>
+          </widget>
+         </item>
+         <item>
+          <widget class="QLabel" name="weekLowTitle">
+           <property name="text">
+            <string>52W Low</string>
+           </property>
+          </widget>
+         </item>
+        </layout>
+       </widget>
+      </item>
+      <item>
+       <widget class="QLabel" name="weekLowValue">
+        <property name="text">
+         <string>$124.17</string>
+        </property>
+        <property name="alignment">
+         <set>Qt::AlignCenter</set>
+        </property>
+       </widget>
+      </item>
+      <item>
+       <widget class="QWidget" name="weekLowChange">
+        <layout class="QHBoxLayout" name="weekLowChangeLayout">
+         <item>
+          <widget class="QLabel" name="weekLowTrendIcon">
+           <property name="text">
+            <string>📈</string>
+           </property>
+          </widget>
+         </item>
+         <item>
+          <widget class="QLabel" name="weekLowChangeValue">
+           <property name="text">
+            <string>+47.0%</string>
+           </property>
+          </widget>
+         </item>
+        </layout>
+       </widget>
+      </item>
+     </layout>
+    </widget>
+   </item>
+   
+   <!-- P/E Ratio Card -->
+   <item>
+    <widget class="QFrame" name="peRatioCard">
+     <property name="frameShape">
+      <enum>QFrame::Box</enum>
+     </property>
+     <layout class="QVBoxLayout" name="peRatioLayout">
+      <property name="spacing">
+       <number>12</number>
+      </property>
+      <property name="leftMargin">
+       <number>20</number>
+      </property>
+      <property name="topMargin">
+       <number>20</number>
+      </property>
+      <property name="rightMargin">
+       <number>20</number>
+      </property>
+      <property name="bottomMargin">
+       <number>20</number>
+      </property>
+      
+      <item>
+       <widget class="QWidget" name="peRatioHeader">
+        <layout class="QHBoxLayout" name="peRatioHeaderLayout">
+         <item>
+          <widget class="QLabel" name="peRatioIcon">
+           <property name="text">
+            <string>📊</string>
+           </property>
+           <property name="minimumSize">
+            <size>
+             <width>24</width>
+             <height>24</height>
+            </size>
+           </property>
+          </widget>
+         </item>
+         <item>
+          <widget class="QLabel" name="peRatioTitle">
+           <property name="text">
+            <string>P/E Ratio</string>
+           </property>
+          </widget>
+         </item>
+        </layout>
+       </widget>
+      </item>
+      <item>
+       <widget class="QLabel" name="peRatioValue">
+        <property name="text">
+         <string>28.45</string>
+        </property>
+        <property name="alignment">
+         <set>Qt::AlignCenter</set>
+        </property>
+       </widget>
+      </item>
+      <item>
+       <widget class="QWidget" name="peRatioChange">
+        <layout class="QHBoxLayout" name="peRatioChangeLayout">
+         <item>
+          <widget class="QLabel" name="peRatioTrendIcon">
+           <property name="text">
+            <string>📉</string>
+           </property>
+          </widget>
+         </item>
+         <item>
+          <widget class="QLabel" name="peRatioChangeValue">
+           <property name="text">
+            <string>-0.3</string>
+           </property>
+          </widget>
+         </item>
+        </layout>
+       </widget>
+      </item>
+     </layout>
+    </widget>
+   </item>
+  </layout>
+ </widget>
+</ui>

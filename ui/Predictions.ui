@@ -2,15 +2,541 @@
 <ui version="4.0">
  <class>Predictions</class>
  <widget class="QWidget" name="Predictions">
+  <property name="geometry">
+   <rect>
+    <x>0</x>
+    <y>0</y>
+    <width>1000</width>
+    <height>800</height>
+   </rect>
+  </property>
   <property name="windowTitle">
    <string>Predictions</string>
   </property>
-  <layout class="QVBoxLayout" name="verticalLayout">
+  
+  <layout class="QVBoxLayout" name="mainLayout">
+   <property name="spacing">
+    <number>24</number>
+   </property>
+   <property name="leftMargin">
+    <number>24</number>
+   </property>
+   <property name="topMargin">
+    <number>24</number>
+   </property>
+   <property name="rightMargin">
+    <number>24</number>
+   </property>
+   <property name="bottomMargin">
+    <number>24</number>
+   </property>
+   
    <item>
-    <widget class="QListWidget" name="listPredictions"/>
+    <widget class="QFrame" name="predictionsCard">
+     <property name="frameShape">
+      <enum>QFrame::Box</enum>
+     </property>
+     <layout class="QVBoxLayout" name="cardLayout">
+      <property name="spacing">
+       <number>24</number>
+      </property>
+      <property name="leftMargin">
+       <number>24</number>
+      </property>
+      <property name="topMargin">
+       <number>24</number>
+      </property>
+      <property name="rightMargin">
+       <number>24</number>
+      </property>
+      <property name="bottomMargin">
+       <number>24</number>
+      </property>
+      
+      <!-- Header with Title and Subtitle -->
+      <item>
+       <widget class="QWidget" name="headerWidget">
+        <layout class="QVBoxLayout" name="headerLayout">
+         <property name="spacing">
+          <number>8</number>
+         </property>
+         <item>
+          <widget class="QLabel" name="predictionsTitle">
+           <property name="text">
+            <string>🧠 AI Stock Predictions</string>
+           </property>
+          </widget>
+         </item>
+         <item>
+          <widget class="QLabel" name="predictionsSubtitle">
+           <property name="text">
+            <string>Advanced data structures and algorithms for stock prediction</string>
+           </property>
+          </widget>
+         </item>
+        </layout>
+       </widget>
+      </item>
+      
+      <!-- Time Range Selection -->
+      <item>
+       <widget class="QWidget" name="timeRangeWidget">
+        <layout class="QHBoxLayout" name="timeRangeLayout">
+         <item>
+          <widget class="QLabel" name="timeRangeLabel">
+           <property name="text">
+            <string>Prediction Range:</string>
+           </property>
+          </widget>
+         </item>
+         <item>
+          <widget class="QPushButton" name="range7Button">
+           <property name="text">
+            <string>7 Days</string>
+           </property>
+           <property name="checkable">
+            <bool>true</bool>
+           </property>
+          </widget>
+         </item>
+         <item>
+          <widget class="QPushButton" name="range15Button">
+           <property name="text">
+            <string>15 Days</string>
+           </property>
+           <property name="checkable">
+            <bool>true</bool>
+           </property>
+          </widget>
+         </item>
+         <item>
+          <widget class="QPushButton" name="range30Button">
+           <property name="text">
+            <string>30 Days</string>
+           </property>
+           <property name="checkable">
+            <bool>true</bool>
+           </property>
+           <property name="checked">
+            <bool>true</bool>
+           </property>
+          </widget>
+         </item>
+         <item>
+          <widget class="QPushButton" name="range60Button">
+           <property name="text">
+            <string>60 Days</string>
+           </property>
+           <property name="checkable">
+            <bool>true</bool>
+           </property>
+          </widget>
+         </item>
+         <item>
+          <spacer name="timeRangeSpacer">
+           <property name="orientation">
+            <enum>Qt::Horizontal</enum>
+           </property>
+          </spacer>
+         </item>
+        </layout>
+       </widget>
+      </item>
+      
+      <!-- Price Summary Cards -->
+      <item>
+       <widget class="QWidget" name="priceSummaryWidget">
+        <layout class="QHBoxLayout" name="priceSummaryLayout">
+         <property name="spacing">
+          <number>16</number>
+         </property>
+         
+         <!-- Current Price -->
+         <item>
+          <widget class="QFrame" name="currentPriceCard">
+           <property name="frameShape">
+            <enum>QFrame::Box</enum>
+           </property>
+           <layout class="QVBoxLayout" name="currentPriceLayout">
+            <property name="spacing">
+             <number>12</number>
+            </property>
+            <property name="leftMargin">
+             <number>20</number>
+            </property>
+            <property name="topMargin">
+             <number>20</number>
+            </property>
+            <property name="rightMargin">
+             <number>20</number>
+            </property>
+            <property name="bottomMargin">
+             <number>20</number>
+            </property>
+            <item>
+             <widget class="QLabel" name="currentPriceLabel">
+              <property name="text">
+               <string>Current Price</string>
+              </property>
+              <property name="alignment">
+               <set>Qt::AlignCenter</set>
+              </property>
+             </widget>
+            </item>
+            <item>
+             <widget class="QLabel" name="currentPriceValue">
+              <property name="text">
+               <string>₹2,847.50</string>
+              </property>
+              <property name="alignment">
+               <set>Qt::AlignCenter</set>
+              </property>
+             </widget>
+            </item>
+           </layout>
+          </widget>
+         </item>
+         
+         <!-- Projected Price -->
+         <item>
+          <widget class="QFrame" name="projectedPriceCard">
+           <property name="frameShape">
+            <enum>QFrame::Box</enum>
+           </property>
+           <layout class="QVBoxLayout" name="projectedPriceLayout">
+            <property name="spacing">
+             <number>12</number>
+            </property>
+            <property name="leftMargin">
+             <number>20</number>
+            </property>
+            <property name="topMargin">
+             <number>20</number>
+            </property>
+            <property name="rightMargin">
+             <number>20</number>
+            </property>
+            <property name="bottomMargin">
+             <number>20</number>
+            </property>
+            <item>
+             <widget class="QLabel" name="projectedPriceLabel">
+              <property name="text">
+               <string>Projected Price (30D)</string>
+              </property>
+              <property name="alignment">
+               <set>Qt::AlignCenter</set>
+              </property>
+             </widget>
+            </item>
+            <item>
+             <widget class="QLabel" name="projectedPriceValue">
+              <property name="text">
+               <string>₹2,945.80</string>
+              </property>
+              <property name="alignment">
+               <set>Qt::AlignCenter</set>
+              </property>
+             </widget>
+            </item>
+           </layout>
+          </widget>
+         </item>
+         
+         <!-- Expected Change -->
+         <item>
+          <widget class="QFrame" name="expectedChangeCard">
+           <property name="frameShape">
+            <enum>QFrame::Box</enum>
+           </property>
+           <layout class="QVBoxLayout" name="expectedChangeLayout">
+            <property name="spacing">
+             <number>12</number>
+            </property>
+            <property name="leftMargin">
+             <number>20</number>
+            </property>
+            <property name="topMargin">
+             <number>20</number>
+            </property>
+            <property name="rightMargin">
+             <number>20</number>
+            </property>
+            <property name="bottomMargin">
+             <number>20</number>
+            </property>
+            <item>
+             <widget class="QLabel" name="expectedChangeLabel">
+              <property name="text">
+               <string>Expected Change</string>
+              </property>
+              <property name="alignment">
+               <set>Qt::AlignCenter</set>
+              </property>
+             </widget>
+            </item>
+            <item>
+             <widget class="QLabel" name="expectedChangeValue">
+              <property name="text">
+               <string>+3.45%</string>
+              </property>
+              <property name="alignment">
+               <set>Qt::AlignCenter</set>
+              </property>
+             </widget>
+            </item>
+           </layout>
+          </widget>
+         </item>
+        </layout>
+       </widget>
+      </item>
+      
+      <!-- Chart Placeholder -->
+      <item>
+       <widget class="QFrame" name="chartContainer">
+        <property name="minimumHeight">
+         <number>300</number>
+        </property>
+        <property name="frameShape">
+         <enum>QFrame::Box</enum>
+        </property>
+        <layout class="QHBoxLayout" name="chartLayout">
+         <item>
+          <widget class="QLabel" name="chartPlaceholder">
+           <property name="text">
+            <string>📈 Interactive Prediction Chart
+Historical Data + AI Predictions + Confidence Intervals
+LineChart with Custom Tooltip</string>
+           </property>
+           <property name="alignment">
+            <set>Qt::AlignCenter</set>
+           </property>
+          </widget>
+         </item>
+        </layout>
+       </widget>
+      </item>
+      
+      <!-- Analysis Models -->
+      <item>
+       <widget class="QWidget" name="analysisModelsWidget">
+        <layout class="QVBoxLayout" name="analysisModelsLayout">
+         <property name="spacing">
+          <number>16</number>
+         </property>
+         
+         <item>
+          <widget class="QLabel" name="analysisModelsTitle">
+           <property name="text">
+            <string>Analysis Models</string>
+           </property>
+          </widget>
+         </item>
+         
+         <!-- Models Grid -->
+         <item>
+          <widget class="QWidget" name="modelsGrid">
+           <layout class="QHBoxLayout" name="modelsLayout">
+            <property name="spacing">
+             <number>16</number>
+            </property>
+            
+            <!-- Moving Average Model -->
+            <item>
+             <widget class="QFrame" name="movingAvgModel">
+              <property name="frameShape">
+               <enum>QFrame::Box</enum>
+              </property>
+              <layout class="QVBoxLayout" name="movingAvgLayout">
+               <property name="spacing">
+                <number>12</number>
+               </property>
+               <property name="leftMargin">
+                <number>16</number>
+               </property>
+               <property name="topMargin">
+                <number>16</number>
+               </property>
+               <property name="rightMargin">
+                <number>16</number>
+               </property>
+               <property name="bottomMargin">
+                <number>16</number>
+               </property>
+               <item>
+                <widget class="QWidget" name="movingAvgHeader">
+                 <layout class="QHBoxLayout" name="movingAvgHeaderLayout">
+                  <item>
+                   <widget class="QLabel" name="movingAvgIcon">
+                    <property name="text">
+                     <string>📈</string>
+                    </property>
+                   </widget>
+                  </item>
+                  <item>
+                   <widget class="QLabel" name="movingAvgName">
+                    <property name="text">
+                     <string>Moving Average Analysis</string>
+                    </property>
+                   </widget>
+                  </item>
+                 </layout>
+                </widget>
+               </item>
+               <item>
+                <widget class="QLabel" name="movingAvgAccuracy">
+                 <property name="text">
+                  <string>Accuracy: 78%</string>
+                 </property>
+                </widget>
+               </item>
+               <item>
+                <widget class="QLabel" name="movingAvgAlgorithm">
+                 <property name="text">
+                  <string>Sliding Window - O(n)</string>
+                 </property>
+                </widget>
+               </item>
+              </layout>
+             </widget>
+            </item>
+            
+            <!-- Fibonacci Model -->
+            <item>
+             <widget class="QFrame" name="fibonacciModel">
+              <property name="frameShape">
+               <enum>QFrame::Box</enum>
+              </property>
+              <layout class="QVBoxLayout" name="fibonacciLayout">
+               <property name="spacing">
+                <number>12</number>
+               </property>
+               <property name="leftMargin">
+                <number>16</number>
+               </property>
+               <property name="topMargin">
+                <number>16</number>
+               </property>
+               <property name="rightMargin">
+                <number>16</number>
+               </property>
+               <property name="bottomMargin">
+                <number>16</number>
+               </property>
+               <item>
+                <widget class="QWidget" name="fibonacciHeader">
+                 <layout class="QHBoxLayout" name="fibonacciHeaderLayout">
+                  <item>
+                   <widget class="QLabel" name="fibonacciIcon">
+                    <property name="text">
+                     <string>🎯</string>
+                    </property>
+                   </widget>
+                  </item>
+                  <item>
+                   <widget class="QLabel" name="fibonacciName">
+                    <property name="text">
+                     <string>Fibonacci Retracement</string>
+                    </property>
+                   </widget>
+                  </item>
+                 </layout>
+                </widget>
+               </item>
+               <item>
+                <widget class="QLabel" name="fibonacciAccuracy">
+                 <property name="text">
+                  <string>Accuracy: 74%</string>
+                 </property>
+                </widget>
+               </item>
+               <item>
+                <widget class="QLabel" name="fibonacciAlgorithm">
+                 <property name="text">
+                  <string>Dynamic Programming - O(1)</string>
+                 </property>
+                </widget>
+               </item>
+              </layout>
+             </widget>
+            </item>
+            
+            <!-- Technical Analysis Model -->
+            <item>
+             <widget class="QFrame" name="technicalModel">
+              <property name="frameShape">
+               <enum>QFrame::Box</enum>
+              </property>
+              <layout class="QVBoxLayout" name="technicalLayout">
+               <property name="spacing">
+                <number>12</number>
+               </property>
+               <property name="leftMargin">
+                <number>16</number>
+               </property>
+               <property name="topMargin">
+                <number>16</number>
+               </property>
+               <property name="rightMargin">
+                <number>16</number>
+               </property>
+               <property name="bottomMargin">
+                <number>16</number>
+               </property>
+               <item>
+                <widget class="QWidget" name="technicalHeader">
+                 <layout class="QHBoxLayout" name="technicalHeaderLayout">
+                  <item>
+                   <widget class="QLabel" name="technicalIcon">
+                    <property name="text">
+                     <string>🧠</string>
+                    </property>
+                   </widget>
+                  </item>
+                  <item>
+                   <widget class="QLabel" name="technicalName">
+                    <property name="text">
+                     <string>Multi-Indicator Analysis</string>
+                    </property>
+                   </widget>
+                  </item>
+                 </layout>
+                </widget>
+               </item>
+               <item>
+                <widget class="QLabel" name="technicalAccuracy">
+                 <property name="text">
+                  <string>Accuracy: 82%</string>
+                 </property>
+                </widget>
+               </item>
+               <item>
+                <widget class="QLabel" name="technicalAlgorithm">
+                 <property name="text">
+                  <string>Ensemble Methods - O(n log n)</string>
+                 </property>
+                </widget>
+               </item>
+               <item>
+                <widget class="QLabel" name="technicalSelected">
+                 <property name="text">
+                  <string>✓ Selected</string>
+                 </property>
+                </widget>
+               </item>
+              </layout>
+             </widget>
+            </item>
+           </layout>
+          </widget>
+         </item>
+        </layout>
+       </widget>
+      </item>
+     </layout>
+    </widget>
    </item>
   </layout>
  </widget>
- <resources/>
- <connections/>
- </ui>
+</ui>

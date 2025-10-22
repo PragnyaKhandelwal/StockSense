@@ -2,24 +2,21 @@
 <ui version="4.0">
  <class>Header</class>
  <widget class="QWidget" name="Header">
+  <property name="geometry">
+   <rect>
+    <x>0</x>
+    <y>0</y>
+    <width>1200</width>
+    <height>80</height>
+   </rect>
+  </property>
   <property name="windowTitle">
    <string>Header</string>
   </property>
-  <property name="minimumSize">
-   <size>
-    <width>0</width>
-    <height>60</height>
-   </size>
-  </property>
-  <property name="maximumSize">
-   <size>
-    <width>16777215</width>
-    <height>60</height>
-   </size>
-  </property>
-  <layout class="QHBoxLayout" name="horizontalLayout">
+  
+  <layout class="QHBoxLayout" name="headerLayout">
    <property name="spacing">
-    <number>20</number>
+    <number>24</number>
    </property>
    <property name="leftMargin">
     <number>24</number>
@@ -33,112 +30,198 @@
    <property name="bottomMargin">
     <number>12</number>
    </property>
+   
+   <!-- Logo Section -->
    <item>
     <widget class="QLabel" name="logoLabel">
      <property name="text">
-      <string>📈 StockSense</string>
-     </property>
-     <property name="font">
-      <font>
-       <pointsize>16</pointsize>
-       <weight>75</weight>
-       <bold>true</bold>
-      </font>
-     </property>
-    </widget>
-   </item>
-   <item>
-    <widget class="QLineEdit" name="searchEdit">
-     <property name="placeholderText">
-      <string>Search stocks... (e.g., RELIANCE, TCS)</string>
+      <string>StockSense</string>
      </property>
      <property name="minimumSize">
       <size>
-       <width>300</width>
-       <height>36</height>
+       <width>120</width>
+       <height>0</height>
       </size>
      </property>
     </widget>
    </item>
+   
+   <!-- Search Section with Dropdown -->
    <item>
-    <spacer name="horizontalSpacer">
+    <widget class="QWidget" name="searchWidget">
+     <property name="minimumSize">
+      <size>
+       <width>400</width>
+       <height>0</height>
+      </size>
+     </property>
+     <layout class="QVBoxLayout" name="searchLayout">
+      <property name="spacing">
+       <number>4</number>
+      </property>
+      <property name="leftMargin">
+       <number>0</number>
+      </property>
+      <property name="topMargin">
+       <number>0</number>
+      </property>
+      <property name="rightMargin">
+       <number>0</number>
+      </property>
+      <property name="bottomMargin">
+       <number>0</number>
+      </property>
+      
+      <item>
+       <widget class="QLineEdit" name="searchInput">
+        <property name="placeholderText">
+         <string>Search stocks, news, or analytics...</string>
+        </property>
+       </widget>
+      </item>
+      
+      <!-- Stock Suggestions List (Initially Hidden) -->
+      <item>
+       <widget class="QListWidget" name="stockSuggestions">
+        <property name="visible">
+         <bool>false</bool>
+        </property>
+        <property name="maximumHeight">
+         <number>200</number>
+        </property>
+        <item>
+         <property name="text">
+          <string>RELIANCE - Reliance Industries</string>
+         </property>
+        </item>
+        <item>
+         <property name="text">
+          <string>TCS - Tata Consultancy Services</string>
+         </property>
+        </item>
+        <item>
+         <property name="text">
+          <string>INFY - Infosys Limited</string>
+         </property>
+        </item>
+        <item>
+         <property name="text">
+          <string>HDFCBANK - HDFC Bank</string>
+         </property>
+        </item>
+        <item>
+         <property name="text">
+          <string>ICICIBANK - ICICI Bank</string>
+         </property>
+        </item>
+        <item>
+         <property name="text">
+          <string>BHARTIARTL - Bharti Airtel</string>
+         </property>
+        </item>
+        <item>
+         <property name="text">
+          <string>ITC - ITC Limited</string>
+         </property>
+        </item>
+       </widget>
+      </item>
+     </layout>
+    </widget>
+   </item>
+   
+   <!-- Spacer -->
+   <item>
+    <spacer name="headerSpacer">
      <property name="orientation">
       <enum>Qt::Horizontal</enum>
      </property>
-     <property name="sizeHint" stdset="0">
-      <size>
-       <width>40</width>
-       <height>20</height>
-      </size>
-     </property>
     </spacer>
    </item>
+   
+   <!-- Network Status Component Placeholder -->
    <item>
-    <widget class="QLabel" name="marketStatusLabel">
-     <property name="text">
-      <string>🟢 Market Open</string>
-     </property>
-     <property name="font">
-      <font>
-       <weight>75</weight>
-       <bold>true</bold>
-      </font>
-     </property>
-    </widget>
-   </item>
-   <item>
-    <widget class="QPushButton" name="refreshButton">
-     <property name="text">
-      <string>🔄 Refresh</string>
-     </property>
+    <widget class="QWidget" name="networkStatusPlaceholder">
      <property name="minimumSize">
       <size>
-       <width>80</width>
-       <height>36</height>
+       <width>100</width>
+       <height>0</height>
       </size>
      </property>
+     <layout class="QHBoxLayout" name="networkStatusLayout">
+      <item>
+       <widget class="QLabel" name="networkIcon">
+        <property name="text">
+         <string>🌐</string>
+        </property>
+       </widget>
+      </item>
+      <item>
+       <widget class="QLabel" name="networkLabel">
+        <property name="text">
+         <string>Online</string>
+        </property>
+       </widget>
+      </item>
+     </layout>
     </widget>
    </item>
+   
+   <!-- Dark Mode Toggle -->
    <item>
-    <widget class="QPushButton" name="themeButton">
+    <widget class="QWidget" name="darkModeWidget">
+     <layout class="QHBoxLayout" name="darkModeLayout">
+      <property name="spacing">
+       <number>8</number>
+      </property>
+      <item>
+       <widget class="QLabel" name="sunIcon">
+        <property name="text">
+         <string>☀️</string>
+        </property>
+       </widget>
+      </item>
+      <item>
+       <widget class="QCheckBox" name="darkModeToggle">
+        <property name="text">
+         <string></string>
+        </property>
+       </widget>
+      </item>
+      <item>
+       <widget class="QLabel" name="moonIcon">
+        <property name="text">
+         <string>🌙</string>
+        </property>
+       </widget>
+      </item>
+     </layout>
+    </widget>
+   </item>
+   
+   <!-- User Avatar -->
+   <item>
+    <widget class="QLabel" name="userAvatar">
      <property name="text">
-      <string>🌙</string>
+      <string>👤</string>
      </property>
      <property name="minimumSize">
       <size>
        <width>40</width>
-       <height>36</height>
+       <height>40</height>
       </size>
      </property>
      <property name="maximumSize">
       <size>
        <width>40</width>
-       <height>36</height>
+       <height>40</height>
       </size>
      </property>
-    </widget>
-   </item>
-   <item>
-    <widget class="QPushButton" name="settingsButton">
-     <property name="text">
-      <string>⚙️</string>
-     </property>
-     <property name="minimumSize">
-      <size>
-       <width>40</width>
-       <height>36</height>
-      </size>
-     </property>
-     <property name="maximumSize">
-      <size>
-       <width>40</width>
-       <height>36</height>
-      </size>
+     <property name="alignment">
+      <set>Qt::AlignCenter</set>
      </property>
     </widget>
    </item>
   </layout>
  </widget>
- <resources/>
- <connections/>
 </ui>
