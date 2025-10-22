@@ -1,5 +1,5 @@
 cmake_minimum_required(VERSION 3.16)
-project(QtApp VERSION 1.0.0 LANGUAGES CXX)
+project(StockSense VERSION 1.0.0 LANGUAGES CXX)
 
 # Generate compile_commands.json for better IDE support
 set(CMAKE_EXPORT_COMPILE_COMMANDS ON)
@@ -47,14 +47,14 @@ file(GLOB_RECURSE HEADERS "include/*.h")
 file(GLOB_RECURSE UI_FILES "ui/*.ui")
 
 # Create executable
-add_executable(QtApp
+add_executable(StockSense
     ${SOURCES}
     ${HEADERS}
     ${UI_FILES}
 )
 
 # Link Qt libraries
-target_link_libraries(QtApp PRIVATE 
+target_link_libraries(StockSense PRIVATE 
     Qt6::Core
     Qt6::Widgets 
     Qt6::Gui
@@ -63,14 +63,14 @@ target_link_libraries(QtApp PRIVATE
 )
 
 # Set target properties
-set_target_properties(QtApp PROPERTIES
+set_target_properties(StockSense PROPERTIES
     WIN32_EXECUTABLE TRUE
     MACOSX_BUNDLE TRUE
     VERSION ${PROJECT_VERSION}
 )
 
 # Include directories
-target_include_directories(QtApp PRIVATE
+target_include_directories(StockSense PRIVATE
     "${CMAKE_CURRENT_SOURCE_DIR}/include"
     "${CMAKE_CURRENT_BINARY_DIR}"
     ${Qt6_Core_INCLUDE_DIRS}
@@ -82,9 +82,10 @@ target_include_directories(QtApp PRIVATE
 
 # Copy Qt DLLs to output directory on Windows
 if(WIN32)
-    add_custom_command(TARGET QtApp POST_BUILD
-        COMMAND ${CMAKE_COMMAND} -E env PATH="${CMAKE_PREFIX_PATH}/bin" 
-        ${CMAKE_PREFIX_PATH}/bin/windeployqt.exe 
-        "$<TARGET_FILE:QtApp>"
-        COMMENT "Copying Qt libraries")
+    find_program(WINDEPLOYQT_EXECUTABLE windeployqt HINTS ${CMAKE_PREFIX_PATH}/bin)
+    if(WINDEPLOYQT_EXECUTABLE)
+        add_custom_command(TARGET StockSense POST_BUILD
+            COMMAND ${WINDEPLOYQT_EXECUTABLE} "$<TARGET_FILE:StockSense>"
+            COMMENT "Copying Qt libraries")
+    endif()
 endif()
