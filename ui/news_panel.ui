@@ -1,0 +1,283 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ui version="4.0">
+ <class>NewsPanel</class>
+ <widget class="QWidget" name="NewsPanel">
+  <property name="geometry">
+   <rect>
+    <x>0</x>
+    <y>0</y>
+    <width>400</width>
+    <height>300</height>
+   </rect>
+  </property>
+  <property name="windowTitle">
+   <string>News Panel</string>
+  </property>
+  
+  <layout class="QVBoxLayout" name="mainLayout">
+   <property name="spacing">
+    <number>16</number>
+   </property>
+   <property name="leftMargin">
+    <number>16</number>
+   </property>
+   <property name="topMargin">
+    <number>16</number>
+   </property>
+   <property name="rightMargin">
+    <number>16</number>
+   </property>
+   <property name="bottomMargin">
+    <number>16</number>
+   </property>
+   
+   <item>
+    <widget class="QLabel" name="newsPanelTitle">
+     <property name="text">
+      <string>News and Insights</string>
+     </property>
+    </widget>
+   </item>
+   
+   <item>
+    <widget class="QScrollArea" name="newsScrollArea">
+     <property name="widgetResizable">
+      <bool>true</bool>
+     </property>
+     <widget class="QWidget" name="scrollAreaWidgetContents">
+      <property name="geometry">
+       <rect>
+        <x>0</x>
+        <y>0</y>
+        <width>368</width>
+        <height>251</height>
+       </rect>
+      </property>
+      <layout class="QVBoxLayout" name="newsLayout">
+       <item>
+        <widget class="QFrame" name="newsItem1">
+         <property name="frameShape">
+          <enum>QFrame::Box</enum>
+         </property>
+         <layout class="QVBoxLayout" name="newsItem1Layout">
+          <item>
+           <widget class="QWidget" name="newsItem1Header">
+            <layout class="QHBoxLayout" name="newsItem1HeaderLayout">
+             <item>
+              <widget class="QLabel" name="newsTitle1">
+               <property name="text">
+                <string>Strong Q4 Earnings Report</string>
+               </property>
+              </widget>
+             </item>
+             <item>
+              <spacer name="newsItem1HeaderSpacer">
+               <property name="orientation">
+                <enum>Qt::Horizontal</enum>
+               </property>
+              </spacer>
+             </item>
+             <item>
+              <widget class="QLabel" name="newsSentiment1">
+               <property name="text">
+                <string>Positive</string>
+               </property>
+              </widget>
+             </item>
+            </layout>
+           </widget>
+          </item>
+          <item>
+           <widget class="QWidget" name="newsItem1Meta">
+            <layout class="QHBoxLayout" name="newsItem1MetaLayout">
+             <item>
+              <widget class="QLabel" name="newsSource1">
+               <property name="text">
+                <string>Financial Times</string>
+               </property>
+              </widget>
+             </item>
+             <item>
+              <spacer name="newsItem1MetaSpacer">
+               <property name="orientation">
+                <enum>Qt::Horizontal</enum>
+               </property>
+              </spacer>
+             </item>
+             <item>
+              <widget class="QLabel" name="newsTime1">
+               <property name="text">
+                <string>2 hours ago</string>
+               </property>
+              </widget>
+             </item>
+            </layout>
+           </widget>
+          </item>
+          <item>
+           <widget class="QLabel" name="newsSummary1">
+            <property name="text">
+             <string>Company beats analyst expectations with revenue growth of 12%.</string>
+            </property>
+           </widget>
+          </item>
+         </layout>
+        </widget>
+       </item>
+       
+       <item>
+        <widget class="QFrame" name="newsItem2">
+         <property name="frameShape">
+          <enum>QFrame::Box</enum>
+         </property>
+         <layout class="QVBoxLayout" name="newsItem2Layout">
+          <item>
+           <widget class="QWidget" name="newsItem2Header">
+            <layout class="QHBoxLayout" name="newsItem2HeaderLayout">
+             <item>
+              <widget class="QLabel" name="newsTitle2">
+               <property name="text">
+                <string>Market Analysis: Tech Stocks Outlook</string>
+               </property>
+              </widget>
+             </item>
+             <item>
+              <spacer name="newsItem2HeaderSpacer">
+               <property name="orientation">
+                <enum>Qt::Horizontal</enum>
+               </property>
+              </spacer>
+             </item>
+             <item>
+              <widget class="QLabel" name="newsSentiment2">
+               <property name="text">
+                <string>Neutral</string>
+               </property>
+              </widget>
+             </item>
+            </layout>
+           </widget>
+          </item>
+          <item>
+           <widget class="QWidget" name="newsItem2Meta">
+            <layout class="QHBoxLayout" name="newsItem2MetaLayout">
+             <item>
+              <widget class="QLabel" name="newsSource2">
+               <property name="text">
+                <string>Bloomberg</string>
+               </property>
+              </widget>
+             </item>
+             <item>
+              <spacer name="newsItem2MetaSpacer">
+               <property name="orientation">
+                <enum>Qt::Horizontal</enum>
+               </property>
+              </spacer>
+             </item>
+             <item>
+              <widget class="QLabel" name="newsTime2">
+               <property name="text">
+                <string>4 hours ago</string>
+               </property>
+              </widget>
+             </item>
+            </layout>
+           </widget>
+          </item>
+          <item>
+           <widget class="QLabel" name="newsSummary2">
+            <property name="text">
+             <string>Industry experts discuss the future of technology investments.</string>
+            </property>
+           </widget>
+          </item>
+         </layout>
+        </widget>
+       </item>
+       
+       <item>
+        <widget class="QFrame" name="newsItem3">
+         <property name="frameShape">
+          <enum>QFrame::Box</enum>
+         </property>
+         <layout class="QVBoxLayout" name="newsItem3Layout">
+          <item>
+           <widget class="QWidget" name="newsItem3Header">
+            <layout class="QHBoxLayout" name="newsItem3HeaderLayout">
+             <item>
+              <widget class="QLabel" name="newsTitle3">
+               <property name="text">
+                <string>Regulatory Concerns Impact Stock Price</string>
+               </property>
+              </widget>
+             </item>
+             <item>
+              <spacer name="newsItem3HeaderSpacer">
+               <property name="orientation">
+                <enum>Qt::Horizontal</enum>
+               </property>
+              </spacer>
+             </item>
+             <item>
+              <widget class="QLabel" name="newsSentiment3">
+               <property name="text">
+                <string>Negative</string>
+               </property>
+              </widget>
+             </item>
+            </layout>
+           </widget>
+          </item>
+          <item>
+           <widget class="QWidget" name="newsItem3Meta">
+            <layout class="QHBoxLayout" name="newsItem3MetaLayout">
+             <item>
+              <widget class="QLabel" name="newsSource3">
+               <property name="text">
+                <string>Reuters</string>
+               </property>
+              </widget>
+             </item>
+             <item>
+              <spacer name="newsItem3MetaSpacer">
+               <property name="orientation">
+                <enum>Qt::Horizontal</enum>
+               </property>
+              </spacer>
+             </item>
+             <item>
+              <widget class="QLabel" name="newsTime3">
+               <property name="text">
+                <string>1 day ago</string>
+               </property>
+              </widget>
+             </item>
+            </layout>
+           </widget>
+          </item>
+          <item>
+           <widget class="QLabel" name="newsSummary3">
+            <property name="text">
+             <string>New regulations may affect company operations in key markets.</string>
+            </property>
+           </widget>
+          </item>
+         </layout>
+        </widget>
+       </item>
+       
+       <item>
+        <spacer name="newsSpacer">
+         <property name="orientation">
+          <enum>Qt::Vertical</enum>
+         </property>
+        </spacer>
+       </item>
+      </layout>
+     </widget>
+    </widget>
+   </item>
+  </layout>
+ </widget>
+</ui>

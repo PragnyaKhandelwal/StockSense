@@ -112,7 +112,7 @@
 		{
 			"label": "Run Application",
 			"type": "shell",
-			"command": "${workspaceFolder}/build/QtApp.exe",
+			"command": "${workspaceFolder}/build/StockSenseQt.exe",
 			"args": [],
 			"group": "test",
 			"dependsOn": "Build Application",

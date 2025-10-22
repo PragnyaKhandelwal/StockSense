@@ -2,12 +2,21 @@
 <ui version="4.0">
  <class>Dashboard</class>
  <widget class="QWidget" name="Dashboard">
+  <property name="geometry">
+   <rect>
+    <x>0</x>
+    <y>0</y>
+    <width>1200</width>
+    <height>900</height>
+   </rect>
+  </property>
   <property name="windowTitle">
    <string>Dashboard</string>
   </property>
-  <layout class="QVBoxLayout" name="mainLayout">
+  
+  <layout class="QVBoxLayout" name="dashboardLayout">
    <property name="spacing">
-    <number>20</number>
+    <number>24</number>
    </property>
    <property name="leftMargin">
     <number>24</number>
@@ -21,113 +30,186 @@
    <property name="bottomMargin">
     <number>24</number>
    </property>
+   
    <item>
-    <widget class="QWidget" name="tickerContainer">
-     <property name="minimumSize">
-      <size>
-       <width>0</width>
-       <height>60</height>
-      </size>
+    <widget class="QFrame" name="stockTickerContainer">
+     <property name="minimumHeight">
+      <number>80</number>
      </property>
+     <property name="frameShape">
+      <enum>QFrame::Box</enum>
+     </property>
+     <layout class="QHBoxLayout" name="stockTickerLayout">
+      <item>
+       <widget class="QLabel" name="stockTickerPlaceholder">
+        <property name="text">
+         <string>NIFTY: 19,456.75 (+127.35) | SENSEX: 65,498.25 (+456.78) | Real-time Stock Ticker</string>
+        </property>
+        <property name="alignment">
+         <set>Qt::AlignCenter</set>
+        </property>
+       </widget>
+      </item>
+     </layout>
     </widget>
    </item>
+   
    <item>
-    <widget class="QWidget" name="mainContent">
-     <layout class="QHBoxLayout" name="horizontalLayout">
+    <widget class="QWidget" name="mainContentGrid">
+     <layout class="QHBoxLayout" name="mainGridLayout">
       <property name="spacing">
        <number>24</number>
       </property>
-      <property name="leftMargin">
-       <number>0</number>
-      </property>
-      <property name="topMargin">
-       <number>0</number>
-      </property>
-      <property name="rightMargin">
-       <number>0</number>
-      </property>
-      <property name="bottomMargin">
-       <number>0</number>
-      </property>
+      
       <item>
        <widget class="QWidget" name="leftColumn">
+        <property name="minimumWidth">
+         <number>700</number>
+        </property>
         <layout class="QVBoxLayout" name="leftColumnLayout">
          <property name="spacing">
           <number>24</number>
          </property>
-         <property name="leftMargin">
-          <number>0</number>
-         </property>
-         <property name="topMargin">
-          <number>0</number>
-         </property>
-         <property name="rightMargin">
-          <number>0</number>
-         </property>
-         <property name="bottomMargin">
-          <number>0</number>
-         </property>
+         
          <item>
-          <widget class="QWidget" name="chartContainer">
-           <property name="minimumSize">
-            <size>
-             <width>0</width>
-             <height>400</height>
-            </size>
+          <widget class="QFrame" name="stockChartContainer">
+           <property name="minimumHeight">
+            <number>400</number>
            </property>
+           <property name="frameShape">
+            <enum>QFrame::Box</enum>
+           </property>
+           <layout class="QVBoxLayout" name="stockChartLayout">
+            <item>
+             <widget class="QLabel" name="stockChartTitle">
+              <property name="text">
+               <string>Stock Chart</string>
+              </property>
+             </widget>
+            </item>
+            <item>
+             <widget class="QLabel" name="stockChartPlaceholder">
+              <property name="text">
+               <string>Interactive Stock Chart with Technical Indicators
+Real-time Price Data | Candlestick Charts | Volume Analysis</string>
+              </property>
+              <property name="alignment">
+               <set>Qt::AlignCenter</set>
+              </property>
+             </widget>
+            </item>
+           </layout>
           </widget>
          </item>
+         
          <item>
-          <widget class="QWidget" name="statsContainer">
-           <property name="minimumSize">
-            <size>
-             <width>0</width>
-             <height>200</height>
-            </size>
+          <widget class="QFrame" name="stockStatsContainer">
+           <property name="minimumHeight">
+            <number>150</number>
            </property>
+           <property name="frameShape">
+            <enum>QFrame::Box</enum>
+           </property>
+           <layout class="QVBoxLayout" name="stockStatsLayout">
+            <item>
+             <widget class="QLabel" name="stockStatsTitle">
+              <property name="text">
+               <string>Stock Statistics</string>
+              </property>
+             </widget>
+            </item>
+            <item>
+             <widget class="QLabel" name="stockStatsPlaceholder">
+              <property name="text">
+               <string>Market Cap: ₹2.89T | 52W H/L: ₹198.23/₹124.17 | P/E: 28.45 | Volume: 2.3M</string>
+              </property>
+              <property name="alignment">
+               <set>Qt::AlignCenter</set>
+              </property>
+             </widget>
+            </item>
+           </layout>
           </widget>
          </item>
         </layout>
        </widget>
       </item>
+      
       <item>
        <widget class="QWidget" name="rightColumn">
-        <property name="minimumSize">
-         <size>
-          <width>350</width>
-          <height>0</height>
-         </size>
-        </property>
-        <property name="maximumSize">
-         <size>
-          <width>350</width>
-          <height>16777215</height>
-         </size>
+        <property name="minimumWidth">
+         <number>450</number>
         </property>
         <layout class="QVBoxLayout" name="rightColumnLayout">
          <property name="spacing">
-          <number>20</number>
+          <number>24</number>
          </property>
-         <property name="leftMargin">
-          <number>0</number>
-         </property>
-         <property name="topMargin">
-          <number>0</number>
-         </property>
-         <property name="rightMargin">
-          <number>0</number>
-         </property>
-         <property name="bottomMargin">
-          <number>0</number>
-         </property>
+         
          <item>
-          <widget class="QWidget" name="quickStatsContainer"/>
+          <widget class="QFrame" name="dataStructuresContainer">
+           <property name="minimumHeight">
+            <number>350</number>
+           </property>
+           <property name="frameShape">
+            <enum>QFrame::Box</enum>
+           </property>
+           <layout class="QVBoxLayout" name="dataStructuresLayout">
+            <item>
+             <widget class="QLabel" name="dataStructuresTitle">
+              <property name="text">
+               <string>Data Structures and Algorithms Analysis</string>
+              </property>
+             </widget>
+            </item>
+            <item>
+             <widget class="QLabel" name="dataStructuresPlaceholder">
+              <property name="text">
+               <string>Advanced Algorithm Analysis:
+Binary Search Trees - O(log n)
+Hash Tables - O(1) 
+Graph Analysis - O(V+E)
+Dynamic Programming - O(n²)</string>
+              </property>
+              <property name="alignment">
+               <set>Qt::AlignTop</set>
+              </property>
+             </widget>
+            </item>
+           </layout>
+          </widget>
          </item>
+         
          <item>
-          <widget class="QWidget" name="dataStructuresContainer"/>
-         </item>
-         <item>
-          <widget class="QWidget" name="newsContainer"/>
+          <widget class="QFrame" name="newsPanelContainer">
+           <property name="minimumHeight">
+            <number>250</number>
+           </property>
+           <property name="frameShape">
+            <enum>QFrame::Box</enum>
+           </property>
+           <layout class="QVBoxLayout" name="newsPanelLayout">
+            <item>
+             <widget class="QLabel" name="newsPanelTitle">
+              <property name="text">
+               <string>News and Insights</string>
+              </property>
+             </widget>
+            </item>
+            <item>
+             <widget class="QLabel" name="newsPanelPlaceholder">
+              <property name="text">
+               <string>Latest Market News:
+Strong Q4 Earnings - 2h ago
+Tech Stocks Outlook - 4h ago  
+Regulatory Updates - 1d ago</string>
+              </property>
+              <property name="alignment">
+               <set>Qt::AlignTop</set>
+              </property>
+             </widget>
+            </item>
+           </layout>
+          </widget>
          </item>
         </layout>
        </widget>
@@ -137,6 +219,4 @@
    </item>
   </layout>
  </widget>
- <resources/>
- <connections/>
 </ui>

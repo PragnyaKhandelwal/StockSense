@@ -1,0 +1,277 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ui version="4.0">
+ <class>SentimentMeter</class>
+ <widget class="QWidget" name="SentimentMeter">
+  <property name="geometry">
+   <rect>
+    <x>0</x>
+    <y>0</y>
+    <width>350</width>
+    <height>400</height>
+   </rect>
+  </property>
+  <property name="windowTitle">
+   <string>Sentiment Meter</string>
+  </property>
+  
+  <layout class="QVBoxLayout" name="mainLayout">
+   <property name="spacing">
+    <number>16</number>
+   </property>
+   <property name="leftMargin">
+    <number>16</number>
+   </property>
+   <property name="topMargin">
+    <number>16</number>
+   </property>
+   <property name="rightMargin">
+    <number>16</number>
+   </property>
+   <property name="bottomMargin">
+    <number>16</number>
+   </property>
+   
+   <item>
+    <widget class="QFrame" name="sentimentCard">
+     <property name="frameShape">
+      <enum>QFrame::Box</enum>
+     </property>
+     <layout class="QVBoxLayout" name="cardLayout">
+      <property name="spacing">
+       <number>20</number>
+      </property>
+      <property name="leftMargin">
+       <number>20</number>
+      </property>
+      <property name="topMargin">
+       <number>20</number>
+      </property>
+      <property name="rightMargin">
+       <number>20</number>
+      </property>
+      <property name="bottomMargin">
+       <number>20</number>
+      </property>
+      
+      <item>
+       <widget class="QLabel" name="sentimentTitle">
+        <property name="text">
+         <string>Sentiment Analysis</string>
+        </property>
+       </widget>
+      </item>
+      
+      <item>
+       <widget class="QWidget" name="overallSentimentWidget">
+        <layout class="QVBoxLayout" name="overallSentimentLayout">
+         <property name="spacing">
+          <number>8</number>
+         </property>
+         <item>
+          <widget class="QLabel" name="sentimentScore">
+           <property name="text">
+            <string>72%</string>
+           </property>
+           <property name="alignment">
+            <set>Qt::AlignCenter</set>
+           </property>
+          </widget>
+         </item>
+         <item>
+          <widget class="QLabel" name="sentimentLabel">
+           <property name="text">
+            <string>Bullish</string>
+           </property>
+           <property name="alignment">
+            <set>Qt::AlignCenter</set>
+           </property>
+          </widget>
+         </item>
+        </layout>
+       </widget>
+      </item>
+      
+      <item>
+       <widget class="QWidget" name="sentimentBreakdownWidget">
+        <layout class="QVBoxLayout" name="sentimentBreakdownLayout">
+         <property name="spacing">
+          <number>12</number>
+         </property>
+         
+         <item>
+          <widget class="QWidget" name="socialMediaWidget">
+           <layout class="QVBoxLayout" name="socialMediaLayout">
+            <property name="spacing">
+             <number>4</number>
+            </property>
+            <item>
+             <widget class="QWidget" name="socialMediaHeader">
+              <layout class="QHBoxLayout" name="socialMediaHeaderLayout">
+               <item>
+                <widget class="QLabel" name="socialMediaLabel">
+                 <property name="text">
+                  <string>Social Media</string>
+                 </property>
+                </widget>
+               </item>
+               <item>
+                <spacer name="socialMediaSpacer">
+                 <property name="orientation">
+                  <enum>Qt::Horizontal</enum>
+                 </property>
+                </spacer>
+               </item>
+               <item>
+                <widget class="QLabel" name="socialMediaValue">
+                 <property name="text">
+                  <string>68%</string>
+                 </property>
+                </widget>
+               </item>
+              </layout>
+             </widget>
+            </item>
+            <item>
+             <widget class="QProgressBar" name="socialMediaProgress">
+              <property name="value">
+               <number>68</number>
+              </property>
+              <property name="textVisible">
+               <bool>false</bool>
+              </property>
+             </widget>
+            </item>
+           </layout>
+          </widget>
+         </item>
+         
+         <item>
+          <widget class="QWidget" name="newsSentimentWidget">
+           <layout class="QVBoxLayout" name="newsSentimentLayout">
+            <property name="spacing">
+             <number>4</number>
+            </property>
+            <item>
+             <widget class="QWidget" name="newsSentimentHeader">
+              <layout class="QHBoxLayout" name="newsSentimentHeaderLayout">
+               <item>
+                <widget class="QLabel" name="newsSentimentLabel">
+                 <property name="text">
+                  <string>News Sentiment</string>
+                 </property>
+                </widget>
+               </item>
+               <item>
+                <spacer name="newsSentimentSpacer">
+                 <property name="orientation">
+                  <enum>Qt::Horizontal</enum>
+                 </property>
+                </spacer>
+               </item>
+               <item>
+                <widget class="QLabel" name="newsSentimentValue">
+                 <property name="text">
+                  <string>75%</string>
+                 </property>
+                </widget>
+               </item>
+              </layout>
+             </widget>
+            </item>
+            <item>
+             <widget class="QProgressBar" name="newsSentimentProgress">
+              <property name="value">
+               <number>75</number>
+              </property>
+              <property name="textVisible">
+               <bool>false</bool>
+              </property>
+             </widget>
+            </item>
+           </layout>
+          </widget>
+         </item>
+         
+         <item>
+          <widget class="QWidget" name="technicalSentimentWidget">
+           <layout class="QVBoxLayout" name="technicalSentimentLayout">
+            <property name="spacing">
+             <number>4</number>
+            </property>
+            <item>
+             <widget class="QWidget" name="technicalSentimentHeader">
+              <layout class="QHBoxLayout" name="technicalSentimentHeaderLayout">
+               <item>
+                <widget class="QLabel" name="technicalSentimentLabel">
+                 <property name="text">
+                  <string>Technical Analysis</string>
+                 </property>
+                </widget>
+               </item>
+               <item>
+                <spacer name="technicalSentimentSpacer">
+                 <property name="orientation">
+                  <enum>Qt::Horizontal</enum>
+                 </property>
+                </spacer>
+               </item>
+               <item>
+                <widget class="QLabel" name="technicalSentimentValue">
+                 <property name="text">
+                  <string>70%</string>
+                 </property>
+                </widget>
+               </item>
+              </layout>
+             </widget>
+            </item>
+            <item>
+             <widget class="QProgressBar" name="technicalSentimentProgress">
+              <property name="value">
+               <number>70</number>
+              </property>
+              <property name="textVisible">
+               <bool>false</bool>
+              </property>
+             </widget>
+            </item>
+           </layout>
+          </widget>
+         </item>
+        </layout>
+       </widget>
+      </item>
+      
+      <item>
+       <widget class="QWidget" name="analystRatingWidget">
+        <layout class="QHBoxLayout" name="analystRatingLayout">
+         <item>
+          <widget class="QLabel" name="analystRatingLabel">
+           <property name="text">
+            <string>Analyst Rating</string>
+           </property>
+          </widget>
+         </item>
+         <item>
+          <spacer name="analystRatingSpacer">
+           <property name="orientation">
+            <enum>Qt::Horizontal</enum>
+           </property>
+          </spacer>
+         </item>
+         <item>
+          <widget class="QLabel" name="analystRatingBadge">
+           <property name="text">
+            <string>Buy</string>
+           </property>
+          </widget>
+         </item>
+        </layout>
+       </widget>
+      </item>
+     </layout>
+    </widget>
+   </item>
+  </layout>
+ </widget>
+</ui>

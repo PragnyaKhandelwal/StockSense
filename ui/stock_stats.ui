@@ -1,0 +1,439 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ui version="4.0">
+ <class>StockStats</class>
+ <widget class="QWidget" name="StockStats">
+  <property name="geometry">
+   <rect>
+    <x>0</x>
+    <y>0</y>
+    <width>800</width>
+    <height>500</height>
+   </rect>
+  </property>
+  <property name="windowTitle">
+   <string>Stock Stats</string>
+  </property>
+  
+  <layout class="QVBoxLayout" name="mainLayout">
+   <property name="spacing">
+    <number>16</number>
+   </property>
+   <property name="leftMargin">
+    <number>16</number>
+   </property>
+   <property name="topMargin">
+    <number>16</number>
+   </property>
+   <property name="rightMargin">
+    <number>16</number>
+   </property>
+   <property name="bottomMargin">
+    <number>16</number>
+   </property>
+   
+   <item>
+    <widget class="QFrame" name="stockStatsCard">
+     <property name="frameShape">
+      <enum>QFrame::Box</enum>
+     </property>
+     <layout class="QVBoxLayout" name="cardLayout">
+      <property name="spacing">
+       <number>20</number>
+      </property>
+      <property name="leftMargin">
+       <number>20</number>
+      </property>
+      <property name="topMargin">
+       <number>20</number>
+      </property>
+      <property name="rightMargin">
+       <number>20</number>
+      </property>
+      <property name="bottomMargin">
+       <number>20</number>
+      </property>
+      
+      <item>
+       <widget class="QLabel" name="stockStatsTitle">
+        <property name="text">
+         <string>Key Statistics</string>
+        </property>
+       </widget>
+      </item>
+      
+      <item>
+       <widget class="QWidget" name="priceRangeWidget">
+        <layout class="QVBoxLayout" name="priceRangeLayout">
+         <property name="spacing">
+          <number>8</number>
+         </property>
+         
+         <item>
+          <widget class="QLabel" name="priceRangeTitle">
+           <property name="text">
+            <string>52 Week Range</string>
+           </property>
+          </widget>
+         </item>
+         
+         <item>
+          <widget class="QWidget" name="priceRangeInfo">
+           <layout class="QHBoxLayout" name="priceRangeInfoLayout">
+            <item>
+             <widget class="QLabel" name="weekLowLabel">
+              <property name="text">
+               <string>₹2,220.30</string>
+              </property>
+             </widget>
+            </item>
+            <item>
+             <widget class="QProgressBar" name="priceRangeProgress">
+              <property name="value">
+               <number>77</number>
+              </property>
+              <property name="textVisible">
+               <bool>false</bool>
+              </property>
+             </widget>
+            </item>
+            <item>
+             <widget class="QLabel" name="weekHighLabel">
+              <property name="text">
+               <string>₹3,024.90</string>
+              </property>
+             </widget>
+            </item>
+           </layout>
+          </widget>
+         </item>
+         
+         <item>
+          <widget class="QLabel" name="currentPositionLabel">
+           <property name="text">
+            <string>Current: ₹2,847.50 (77.8% of range)</string>
+           </property>
+          </widget>
+         </item>
+        </layout>
+       </widget>
+      </item>
+      
+      <item>
+       <widget class="QWidget" name="statsGrid">
+        <layout class="QGridLayout" name="statsGridLayout">
+         <property name="spacing">
+          <number>16</number>
+         </property>
+         
+         <item row="0" column="0">
+          <widget class="QWidget" name="marketCapStat">
+           <layout class="QVBoxLayout" name="marketCapStatLayout">
+            <property name="spacing">
+             <number>4</number>
+            </property>
+            <item>
+             <widget class="QLabel" name="marketCapLabel">
+              <property name="text">
+               <string>Market Cap</string>
+              </property>
+             </widget>
+            </item>
+            <item>
+             <widget class="QLabel" name="marketCapValue">
+              <property name="text">
+               <string>₹18.2L Cr</string>
+              </property>
+             </widget>
+            </item>
+           </layout>
+          </widget>
+         </item>
+         
+         <item row="0" column="1">
+          <widget class="QWidget" name="peRatioStat">
+           <layout class="QVBoxLayout" name="peRatioStatLayout">
+            <property name="spacing">
+             <number>4</number>
+            </property>
+            <item>
+             <widget class="QLabel" name="peRatioLabel">
+              <property name="text">
+               <string>P/E Ratio</string>
+              </property>
+             </widget>
+            </item>
+            <item>
+             <widget class="QLabel" name="peRatioValue">
+              <property name="text">
+               <string>24.85</string>
+              </property>
+             </widget>
+            </item>
+           </layout>
+          </widget>
+         </item>
+         
+         <item row="0" column="2">
+          <widget class="QWidget" name="epsStat">
+           <layout class="QVBoxLayout" name="epsStatLayout">
+            <property name="spacing">
+             <number>4</number>
+            </property>
+            <item>
+             <widget class="QLabel" name="epsLabel">
+              <property name="text">
+               <string>EPS</string>
+              </property>
+             </widget>
+            </item>
+            <item>
+             <widget class="QLabel" name="epsValue">
+              <property name="text">
+               <string>₹114.50</string>
+              </property>
+             </widget>
+            </item>
+           </layout>
+          </widget>
+         </item>
+         
+         <item row="0" column="3">
+          <widget class="QWidget" name="dividendYieldStat">
+           <layout class="QVBoxLayout" name="dividendYieldStatLayout">
+            <property name="spacing">
+             <number>4</number>
+            </property>
+            <item>
+             <widget class="QLabel" name="dividendYieldLabel">
+              <property name="text">
+               <string>Dividend Yield</string>
+              </property>
+             </widget>
+            </item>
+            <item>
+             <widget class="QLabel" name="dividendYieldValue">
+              <property name="text">
+               <string>0.35%</string>
+              </property>
+             </widget>
+            </item>
+           </layout>
+          </widget>
+         </item>
+         
+         <item row="1" column="0">
+          <widget class="QWidget" name="avgVolumeStat">
+           <layout class="QVBoxLayout" name="avgVolumeStatLayout">
+            <property name="spacing">
+             <number>4</number>
+            </property>
+            <item>
+             <widget class="QLabel" name="avgVolumeLabel">
+              <property name="text">
+               <string>Avg Volume</string>
+              </property>
+             </widget>
+            </item>
+            <item>
+             <widget class="QLabel" name="avgVolumeValue">
+              <property name="text">
+               <string>1.2Cr</string>
+              </property>
+             </widget>
+            </item>
+           </layout>
+          </widget>
+         </item>
+         
+         <item row="1" column="1">
+          <widget class="QWidget" name="betaStat">
+           <layout class="QVBoxLayout" name="betaStatLayout">
+            <property name="spacing">
+             <number>4</number>
+            </property>
+            <item>
+             <widget class="QLabel" name="betaLabel">
+              <property name="text">
+               <string>Beta</string>
+              </property>
+             </widget>
+            </item>
+            <item>
+             <widget class="QLabel" name="betaValue">
+              <property name="text">
+               <string>0.95</string>
+              </property>
+             </widget>
+            </item>
+           </layout>
+          </widget>
+         </item>
+         
+         <item row="1" column="2">
+          <widget class="QWidget" name="revenueStat">
+           <layout class="QVBoxLayout" name="revenueStatLayout">
+            <property name="spacing">
+             <number>4</number>
+            </property>
+            <item>
+             <widget class="QLabel" name="revenueLabel">
+              <property name="text">
+               <string>Revenue</string>
+              </property>
+             </widget>
+            </item>
+            <item>
+             <widget class="QLabel" name="revenueValue">
+              <property name="text">
+               <string>₹7.9L Cr</string>
+              </property>
+             </widget>
+            </item>
+           </layout>
+          </widget>
+         </item>
+         
+         <item row="1" column="3">
+          <widget class="QWidget" name="netIncomeStat">
+           <layout class="QVBoxLayout" name="netIncomeStatLayout">
+            <property name="spacing">
+             <number>4</number>
+            </property>
+            <item>
+             <widget class="QLabel" name="netIncomeLabel">
+              <property name="text">
+               <string>Net Income</string>
+              </property>
+             </widget>
+            </item>
+            <item>
+             <widget class="QLabel" name="netIncomeValue">
+              <property name="text">
+               <string>₹75,946 Cr</string>
+              </property>
+             </widget>
+            </item>
+           </layout>
+          </widget>
+         </item>
+        </layout>
+       </widget>
+      </item>
+      
+      <item>
+       <widget class="QWidget" name="marginsWidget">
+        <layout class="QVBoxLayout" name="marginsLayout">
+         <property name="spacing">
+          <number>12</number>
+         </property>
+         
+         <item>
+          <widget class="QLabel" name="marginsTitle">
+           <property name="text">
+            <string>Profit Margins</string>
+           </property>
+          </widget>
+         </item>
+         
+         <item>
+          <widget class="QWidget" name="grossMarginWidget">
+           <layout class="QVBoxLayout" name="grossMarginLayout">
+            <property name="spacing">
+             <number>4</number>
+            </property>
+            <item>
+             <widget class="QWidget" name="grossMarginHeader">
+              <layout class="QHBoxLayout" name="grossMarginHeaderLayout">
+               <item>
+                <widget class="QLabel" name="grossMarginLabel">
+                 <property name="text">
+                  <string>Gross Margin</string>
+                 </property>
+                </widget>
+               </item>
+               <item>
+                <spacer name="grossMarginSpacer">
+                 <property name="orientation">
+                  <enum>Qt::Horizontal</enum>
+                 </property>
+                </spacer>
+               </item>
+               <item>
+                <widget class="QLabel" name="grossMarginValue">
+                 <property name="text">
+                  <string>42.8%</string>
+                 </property>
+                </widget>
+               </item>
+              </layout>
+             </widget>
+            </item>
+            <item>
+             <widget class="QProgressBar" name="grossMarginProgress">
+              <property name="value">
+               <number>43</number>
+              </property>
+              <property name="textVisible">
+               <bool>false</bool>
+              </property>
+             </widget>
+            </item>
+           </layout>
+          </widget>
+         </item>
+         
+         <item>
+          <widget class="QWidget" name="operatingMarginWidget">
+           <layout class="QVBoxLayout" name="operatingMarginLayout">
+            <property name="spacing">
+             <number>4</number>
+            </property>
+            <item>
+             <widget class="QWidget" name="operatingMarginHeader">
+              <layout class="QHBoxLayout" name="operatingMarginHeaderLayout">
+               <item>
+                <widget class="QLabel" name="operatingMarginLabel">
+                 <property name="text">
+                  <string>Operating Margin</string>
+                 </property>
+                </widget>
+               </item>
+               <item>
+                <spacer name="operatingMarginSpacer">
+                 <property name="orientation">
+                  <enum>Qt::Horizontal</enum>
+                 </property>
+                </spacer>
+               </item>
+               <item>
+                <widget class="QLabel" name="operatingMarginValue">
+                 <property name="text">
+                  <string>27.5%</string>
+                 </property>
+                </widget>
+               </item>
+              </layout>
+             </widget>
+            </item>
+            <item>
+             <widget class="QProgressBar" name="operatingMarginProgress">
+              <property name="value">
+               <number>28</number>
+              </property>
+              <property name="textVisible">
+               <bool>false</bool>
+              </property>
+             </widget>
+            </item>
+           </layout>
+          </widget>
+         </item>
+        </layout>
+       </widget>
+      </item>
+     </layout>
+    </widget>
+   </item>
+  </layout>
+ </widget>
+</ui>
