@@ -116,7 +116,7 @@
 			"args": [],
 			"group": "test",
 			"dependsOn": "Build Application",
-			"detail": "Run the compiled application",
+			"detail": "Run the compiled StockSense application",
 			"presentation": {
 				"echo": true,
 				"reveal": "always",

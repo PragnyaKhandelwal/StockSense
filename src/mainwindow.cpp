@@ -29,7 +29,6 @@
 #include <QTimer>
 #include <QDateTime>
 #include <QRandomGenerator>
-#include <QtCharts>
 #include <QtCharts/QChart>
 #include <QtCharts/QChartView>
 #include <QtCharts/QLineSeries>
