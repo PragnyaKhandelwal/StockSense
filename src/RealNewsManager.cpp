@@ -1,4 +1,10 @@
 #include "RealNewsManager.h"
+#include <QJsonDocument>
+#include <QJsonObject>
+#include <QJsonArray>
+#include <QRegularExpression>
+#include <QDateTime>
+#include <QTime>
 
 RealNewsManager::RealNewsManager(QObject *parent) : QObject(parent)
 {
@@ -11,8 +17,9 @@ RealNewsManager::RealNewsManager(QObject *parent) : QObject(parent)
     
     // Initialize with Yahoo Finance news
     fetchGeneralMarketNews();
-    qDebug() << "✅ Yahoo Finance News Manager initialized";
+    qDebug() << "✅ Yahoo Finance News Manager initialized with link support";
 }
+
 
 void RealNewsManager::fetchNewsForStock(const QString &symbol)
 {
@@ -21,12 +28,14 @@ void RealNewsManager::fetchNewsForStock(const QString &symbol)
     fetchYahooGeneralNews();
 }
 
+
 void RealNewsManager::fetchNewsForCurrentStock()
 {
     if (!m_currentSymbol.isEmpty()) {
         fetchNewsForStock(m_currentSymbol);
     }
 }
+
 
 void RealNewsManager::fetchYahooStockNews(const QString &symbol)
 {
@@ -62,11 +71,13 @@ void RealNewsManager::fetchYahooStockNews(const QString &symbol)
     });
 }
 
+
 void RealNewsManager::fetchYahooGeneralNews()
 {
     // Yahoo Finance RSS feed for general market news
     fetchYahooRSSNews("", "general");
 }
+
 
 void RealNewsManager::fetchYahooRSSNews(const QString &symbol, const QString &type)
 {
@@ -118,6 +129,7 @@ void RealNewsManager::fetchYahooRSSNews(const QString &symbol, const QString &ty
     });
 }
 
+
 QStringList RealNewsManager::parseYahooNewsResponse(const QByteArray &jsonData, const QString &symbol)
 {
     QStringList newsItems;
@@ -136,16 +148,18 @@ QStringList RealNewsManager::parseYahooNewsResponse(const QByteArray &jsonData, 
                 
                 if (!title.isEmpty()) {
                     QString timeStr = QTime::currentTime().addSecs(-i * 300).toString("hh:mm");
-                    newsItems << QString("📈 %1: %2 - %3").arg(symbol).arg(title.left(60)).arg(timeStr);
+                    // Format: "title|url" for clickable links
+                    QString newsUrl = QString("https://finance.yahoo.com/quote/%1.NS").arg(symbol);
+                    newsItems << QString("%1|%2").arg(title.left(60), newsUrl);
                 }
             }
         }
         
-        // If no news from explains, create contextual news
+        // If no news from explains, create contextual news with URLs
         if (newsItems.isEmpty()) {
-            QString timeStr = QTime::currentTime().toString("hh:mm");
-            newsItems << QString("📊 %1 trading update from Yahoo Finance - %2").arg(symbol).arg(timeStr);
-            newsItems << QString("💹 %1 market analysis available - %2").arg(symbol).arg(QTime::currentTime().addSecs(-180).toString("hh:mm"));
+            QString newsUrl = QString("https://finance.yahoo.com/quote/%1.NS").arg(symbol);
+            newsItems << QString("Trading update|%1").arg(newsUrl);
+            newsItems << QString("Market analysis|%1").arg(newsUrl);
         }
         
     } catch (...) {
@@ -155,24 +169,31 @@ QStringList RealNewsManager::parseYahooNewsResponse(const QByteArray &jsonData, 
     return newsItems;
 }
 
+
 QStringList RealNewsManager::parseYahooRSSFeed(const QByteArray &xmlData, const QString &type, const QString &symbol)
 {
     QStringList newsItems;
     
     QString xml = QString::fromUtf8(xmlData);
     
-    // Parse Yahoo Finance RSS format using QRegularExpression (Qt6 compatible)
+    // Parse Yahoo Finance RSS format
     QStringList items = xml.split("<item>");
     
     for (int i = 1; i < qMin(5, items.size()); ++i) {
         QString item = items[i];
         
-        // Extract title between <title> tags using QRegularExpression
+        // Extract title between <title> tags
         QRegularExpression titleRegex("<title><!\\[CDATA\\[([^\\]]+)\\]\\]></title>");
         QRegularExpressionMatch titleMatch = titleRegex.match(item);
         
         if (titleMatch.hasMatch()) {
             QString title = titleMatch.captured(1);
+            
+            // Extract link/URL from RSS
+            QRegularExpression linkRegex("<link>([^<]+)</link>");
+            QRegularExpressionMatch linkMatch = linkRegex.match(item);
+            QString newsUrl = linkMatch.hasMatch() ? linkMatch.captured(1) : 
+                             QString("https://finance.yahoo.com");
             
             // Extract publish date
             QRegularExpression dateRegex("<pubDate>([^<]+)</pubDate>");
@@ -188,18 +209,20 @@ QStringList RealNewsManager::parseYahooRSSFeed(const QByteArray &xmlData, const 
             title = title.replace("&amp;", "&").replace("&quot;", "\"")
                         .replace("&lt;", "<").replace("&gt;", ">");
             
-            QString emoji = type == "stock" ? "📈" : "📊";
-            newsItems << QString("%1 %2 - %3").arg(emoji).arg(title.left(65)).arg(timeStr);
+            // Format: "title|url"
+            newsItems << QString("%1|%2").arg(title.left(65), newsUrl);
         }
     }
     
     return newsItems;
 }
 
+
 void RealNewsManager::fetchGeneralMarketNews()
 {
     fetchYahooGeneralNews();
 }
+
 
 void RealNewsManager::emitCombinedNews()
 {
@@ -213,13 +236,15 @@ void RealNewsManager::emitCombinedNews()
     }
     
     emit newsReceived(allNews.mid(0, 8));
-    qDebug() << "📰 Emitted" << allNews.size() << "Yahoo Finance news items";
+    qDebug() << "📰 Emitted" << allNews.size() << "Yahoo Finance news items with clickable links";
 }
+
 
 void RealNewsManager::fetchStockSpecificNews(const QString &symbol)
 {
     fetchYahooStockNews(symbol);
 }
+
 
 void RealNewsManager::fetchAlternativeNews(const QString &query, const QString &type)
 {
@@ -234,6 +259,7 @@ void RealNewsManager::fetchAlternativeNews(const QString &query, const QString &
     emitCombinedNews();
 }
 
+
 QStringList RealNewsManager::generateIntelligentNews(const QString &query, const QString &type)
 {
     QStringList news;
@@ -241,17 +267,18 @@ QStringList RealNewsManager::generateIntelligentNews(const QString &query, const
     QString timeStr = currentTime.toString("hh:mm");
     
     if (type == "stock") {
-        // Yahoo Finance style stock-specific news
-        news << QString("📈 Yahoo Finance: %1 technical analysis - %2").arg(m_currentSymbol).arg(timeStr);
-        news << QString("💹 Yahoo Finance: %1 volume surge detected - %2").arg(m_currentSymbol).arg(currentTime.addSecs(-180).toString("hh:mm"));
-        news << QString("📊 Yahoo Finance: %1 price action review - %2").arg(m_currentSymbol).arg(currentTime.addSecs(-360).toString("hh:mm"));
-        news << QString("🎯 Yahoo Finance: %1 analyst coverage update - %2").arg(m_currentSymbol).arg(currentTime.addSecs(-540).toString("hh:mm"));
+        // Yahoo Finance style stock-specific news with URLs
+        QString stockUrl = QString("https://finance.yahoo.com/quote/%1.NS").arg(m_currentSymbol);
+        news << QString("%1 technical analysis|%2").arg(m_currentSymbol, stockUrl);
+        news << QString("%1 volume surge detected|%2").arg(m_currentSymbol, stockUrl);
+        news << QString("%1 price action review|%2").arg(m_currentSymbol, stockUrl);
+        news << QString("%1 analyst coverage|%2").arg(m_currentSymbol, stockUrl);
     } else {
-        // Yahoo Finance style general market news
-        news << QString("📈 Yahoo Finance: NIFTY 50 market wrap - %1").arg(timeStr);
-        news << QString("📊 Yahoo Finance: SENSEX trading update - %1").arg(currentTime.addSecs(-120).toString("hh:mm"));
-        news << QString("💰 Yahoo Finance: Indian markets overview - %1").arg(currentTime.addSecs(-300).toString("hh:mm"));
-        news << QString("🌏 Yahoo Finance: Asian markets influence - %1").arg(currentTime.addSecs(-600).toString("hh:mm"));
+        // Yahoo Finance style general market news with URLs
+        news << QString("NIFTY 50 market wrap|https://finance.yahoo.com/quote/^NSEI");
+        news << QString("SENSEX trading update|https://finance.yahoo.com/quote/^BSESN");
+        news << QString("Indian markets overview|https://finance.yahoo.com");
+        news << QString("Asian markets influence|https://finance.yahoo.com");
     }
     
     return news;
