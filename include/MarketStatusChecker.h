@@ -2,11 +2,8 @@
 #define MARKETSTATUSCHECKER_H
 
 #include <QObject>
+#include <QNetworkAccessManager>
 #include <QTimer>
-#include <QDateTime>
-#include <QTime>
-#include <QString>
-#include <QDebug>
 
 class MarketStatusChecker : public QObject
 {
@@ -14,18 +11,25 @@ class MarketStatusChecker : public QObject
 
 public:
     explicit MarketStatusChecker(QObject *parent = nullptr);
-    bool isMarketOpen() const;
-    QString getMarketStatusText() const;
+    void fetchIndexData();
+    
+    // Methods that RealStockDataManager needs
+    bool isMarketOpen() const { return m_marketOpen; }
+    QString getMarketStatusText() const { return m_marketStatusText; }
 
 signals:
-    void marketStatusChanged(bool isOpen, const QString &statusText);
-
-private slots:
-    void checkMarketStatus();
+    void niftyUpdated(const QString &price, const QString &change, const QString &color);
+    void sensexUpdated(const QString &price, const QString &change, const QString &color);
+    void marketStatusChanged(bool isOpen);  // Signal for when market opens/closes
 
 private:
-    QTimer *m_statusTimer;
-    bool m_isMarketOpen = false;
+    void fetchIndexPrice(const QString &symbol, const QString &indexName);
+    void parseIndexResponse(const QByteArray &jsonData, const QString &indexName, const QString &symbol);
+    void updateMarketStatus();
+    
+    QNetworkAccessManager *m_networkManager;
+    QTimer *m_updateTimer;
+    bool m_marketOpen;
     QString m_marketStatusText;
 };
 

@@ -5,7 +5,12 @@ RealStockDataManager::RealStockDataManager(QObject *parent) : QObject(parent)
     m_networkManager = new QNetworkAccessManager(this);
     m_marketChecker = new MarketStatusChecker(this);
     connect(m_marketChecker, &MarketStatusChecker::marketStatusChanged,
-            this, &RealStockDataManager::onMarketStatusChanged);
+        this, [this](bool isOpen) {
+            QString status = isOpen ? "Market Open" : "Market Closed";
+            qDebug() << "Market Status:" << status;
+            adjustUpdateInterval();
+        });
+
     
     m_yahooSymbols = {
         {"RELIANCE", "RELIANCE.NS"}, {"TCS", "TCS.NS"}, {"INFY", "INFY.NS"},
