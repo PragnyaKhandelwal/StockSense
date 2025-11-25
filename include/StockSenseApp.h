@@ -115,15 +115,14 @@ private:
     QLabel *m_sentimentScore;
     QLabel *m_sentimentLabel;
     QProgressBar *m_sentimentProgress;
-    private:
-    
+
+private:
     // Dashboard labels
     QLabel *m_dashboardNiftyPrice;
     QLabel *m_dashboardNiftyChange;
     QLabel *m_dashboardSensexPrice;
     QLabel *m_dashboardSensexChange;
     QLabel *m_marketStatusLabel;
-
 
     // News and chart components
     QListWidget *m_newsList;
@@ -141,11 +140,19 @@ private:
     QTimer *m_updateTimer;
     QString m_currentStock = "RELIANCE";
     QMap<QString, QJsonObject> m_liveStockData;
+    // Watchlist: symbol -> latest data
+    QMap<QString, QJsonObject> m_watchlist;
 
     // Add member variables for NIFTY/SENSEX display
     QLabel *m_niftyValueLabel;
     QLabel *m_sensexValueLabel;
     QStringList getComprehensiveStockList() const;
+    void addToWatchlist(const QString& symbol);
+void removeFromWatchlist(const QString& symbol);
+void refreshWatchlistTable();
+private:
+    QTableWidget* m_watchlistTable;
+
 };
 
 #endif // STOCKSENSEAPP_H

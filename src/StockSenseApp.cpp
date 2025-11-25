@@ -1585,6 +1585,38 @@ QWidget *StockSenseApp::createPredictions()
 
     return container;
 }
+void StockSenseApp::addToWatchlist(const QString& symbol)
+{
+    if (!m_watchlist.contains(symbol)) {
+        // Initially insert with empty data; will fill with live data when received
+        m_watchlist.insert(symbol, QJsonObject());
+        if (m_realDataManager)
+    m_realDataManager->fetchStockData(symbol);
+        refreshWatchlistTable();
+    }
+}
+void StockSenseApp::removeFromWatchlist(const QString& symbol)
+{
+    m_watchlist.remove(symbol);
+    refreshWatchlistTable();
+}
+void StockSenseApp::refreshWatchlistTable()
+{
+    // Replace m_watchlistTable with whatever your table widget is called!
+    m_watchlistTable->setRowCount(m_watchlist.size());
+    int row = 0;
+    for (auto it = m_watchlist.cbegin(); it != m_watchlist.cend(); ++it, ++row) {
+        const QString& symbol = it.key();
+        const QJsonObject& data = it.value();
+        m_watchlistTable->setItem(row, 0, new QTableWidgetItem(symbol));
+
+        QString price = data.contains("price")
+            ? QString::number(data["price"].toDouble())
+            : "--";
+        m_watchlistTable->setItem(row, 1, new QTableWidgetItem(price));
+        // Add more columns as needed (change, %change, etc.)
+    }
+}
 
 QWidget *StockSenseApp::createWatchlist()
 {
@@ -1629,6 +1661,7 @@ QWidget *StockSenseApp::createWatchlist()
             background-color: #2563eb;
         }
     )");
+    
 
     headerLayout->addWidget(title);
     headerLayout->addStretch();
@@ -2086,6 +2119,17 @@ void StockSenseApp::setupConnections()
                 m_searchInput->clear();
             } });
     }
+    if (m_searchInput) {
+    connect(m_searchInput, &QLineEdit::returnPressed, this, [this]() {
+        QString text = m_searchInput->text().trimmed().toUpper();
+        if (!text.isEmpty()) {
+            selectStock(text);
+            m_searchInput->clear();
+            if (m_stockSuggestions) m_stockSuggestions->setVisible(false);
+        }
+    });
+}
+
 }
 
 void StockSenseApp::setupTimer()

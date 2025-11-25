@@ -104,7 +104,7 @@ private:
     double m_bollingerUpper, m_bollingerLower;
     QString m_trendDirection;
     double m_forecastAccuracy;
-    
+     double m_lastFetchedPrice = 0.0;
     int m_cacheHits, m_cacheMisses;
 };
 
