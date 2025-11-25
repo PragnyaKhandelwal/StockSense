@@ -34,10 +34,16 @@ RealStockDataManager::RealStockDataManager(QObject *parent) : QObject(parent)
 
 void RealStockDataManager::fetchStockData(const QString &symbol)
 {
-    if (!m_yahooSymbols.contains(symbol)) return;
-    QString yahooSymbol = m_yahooSymbols[symbol];
+    QString yahooSymbol;
+    if (m_yahooSymbols.contains(symbol)) {
+        // Use your mapping for known symbols (to handle special cases/ticker differences)
+        yahooSymbol = m_yahooSymbols[symbol];
+    } else {
+        // Dynamically form the Yahoo symbol for any user-typed NSE symbol
+        yahooSymbol = symbol.endsWith(".NS") ? symbol : symbol + ".NS";
+    }
     fetchFromYahoo(symbol, yahooSymbol);
-    qDebug() << "🔄 Requesting LIVE data for" << symbol;
+    qDebug() << "🔄 Requesting LIVE data for" << symbol << "->" << yahooSymbol;
 }
 
 void RealStockDataManager::fetchAllStocks()
@@ -325,7 +331,7 @@ void RealStockDataManager::handleReply()
 void RealStockDataManager::adjustUpdateInterval()
 {
     if (m_marketChecker->isMarketOpen()) {
-        m_updateTimer->start(15000); // 15 seconds during market hours (more frequent for indices)
+        m_updateTimer->start(5000); // 5 seconds during market hours (more frequent for indices)
     } else {
         m_updateTimer->start(300000); // 5 minutes after hours
     }
